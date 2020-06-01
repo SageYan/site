@@ -1,25 +1,20 @@
 ---
-title: Asset Folders
+title: 资源文件夹
 ---
-## Global Asset Folder
+资源（Asset）代表 `source` 文件夹中除了文章以外的所有文件，例如图片、CSS、JS 文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 `source/images` 文件夹中。然后通过类似于 `![](/images/image.jpg)` 的方法访问它们。
 
-Assets are non-post files in the `source` folder, such as images, CSS or JavaScript files. For instance, If you are only going to have a few images in the Hexo project, then the easiest way is to keep them in a `source/images` directory. Then, you can access them using something like `![](/images/image.jpg)`.
-
-## Post Asset Folder
-
-{% youtube feIDVQ2tz0o %}
-
-For users who expect to regularly serve images and/or other assets, and for those who prefer to separate their assets on a post-per-post basis, Hexo also provides a more organized way to manage assets. This slightly more involved, but very convenient approach to asset management can be turned on by setting the `post_asset_folder` setting in `_config.yml` to true.
+## 文章资源文件夹
+对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 `config.yml` 文件中的 `post_asset_folder` 选项设为 `true` 来打开。
 
 ``` yaml _config.yml
 post_asset_folder: true
 ```
 
-With asset folder management enabled, Hexo will create a folder every time you make a new post with the `hexo new [layout] <title>` command. This asset folder will have the same name as the markdown file associated with the post. Place all assets related to your post into the associated folder, and you will be able to reference them using a relative path, making for an easier and more convenient workflow.
+当资源文件管理功能打开后，Hexo将会在你每一次通过 `hexo new [layout] <title>` 命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们，这样你就得到了一个更简单而且方便得多的工作流。
 
-## Tag Plugins For Relative Path Referencing
+## 相对路径引用的标签插件
 
-Referencing images or other assets using normal markdown syntax and relative paths may lead to incorrect display on archive or index pages. Plugins have been created by the community to address this issue in Hexo 2. However, with the release of Hexo 3, several new tag plugins were added to core. These enable you to reference your assets more easily in posts:
+通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。在Hexo 2时代，社区创建了很多插件来解决这个问题。但是，随着Hexo 3 的发布，许多新的标签插件被加入到了核心代码中。这使得你可以更简单地在文章中引用你的资源。
 
 ```
 {% asset_path slug %}
@@ -27,13 +22,12 @@ Referencing images or other assets using normal markdown syntax and relative pat
 {% asset_link slug [title] %}
 ```
 
-For example, with post asset folders enabled, if you place an image `example.jpg` into your asset folder, it will *not* appear on the index page if you reference it using a relative path with regular `![](/example.jpg)` markdown syntax (however, it will work as expected in the post itself).
+比如说：当你打开文章资源文件夹功能后，你把一个 `example.jpg` 图片放在了你的资源文件夹中，如果通过使用相对路径的常规 markdown 语法 `![](/example.jpg)` ，它将 *不会* 出现在首页上。（但是它会在文章中按你期待的方式工作）
 
-The correct way to reference the image will thus be using tag plugin syntax rather than markdown:
+正确的引用图片方式是使用下列的标签插件而不是 markdown ：
 
 ```
 {% asset_img example.jpg This is an example image %}
-{% asset_img "spaced asset.jpg" "spaced title" %}
 ```
 
-This way, the image will appear both inside the post and on index and archive pages.
+通过这种方式，图片将会同时出现在文章和主页以及归档页中。

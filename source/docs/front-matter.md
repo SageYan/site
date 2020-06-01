@@ -2,11 +2,10 @@
 title: Front-matter
 ---
 
-{% youtube pfD6FCZdW4Q %}
+{% youtube Rl48Yk4A_V8 %}
 
-Front-matter is a block of YAML or JSON at the beginning of the file that is used to configure settings for your writings. Front-matter is terminated by three dashes when written in YAML or three semicolons when written in JSON.
+Front-matter 是文件最上方以 `---` 分隔的区域，用于指定个别文件的变量，举例来说：
 
-**YAML**
 ``` yaml
 ---
 title: Hello World
@@ -14,52 +13,62 @@ date: 2013/7/13 20:46:25
 ---
 ```
 
-**JSON**
+以下是预先定义的参数，您可在模板中使用这些参数值并加以利用。
+
+参数 | 描述 | 默认值
+--- | --- | ---
+`layout` | 布局 | 
+`title` | 标题 | 文章的文件名
+`date` | 建立日期 | 文件建立日期
+`updated` | 更新日期 | 文件更新日期
+`comments` | 开启文章的评论功能 | true
+`tags` | 标签（不适用于分页） |
+`categories` | 分类（不适用于分页）|
+`permalink` | 覆盖文章网址 |
+`keywords` | 仅用于 meta 标签和 Open Graph 的关键词（不推荐使用） |
+
+## 分类和标签
+
+只有文章支持分类和标签，您可以在 Front-matter 中设置。在其他系统中，分类和标签听起来很接近，但是在 Hexo 中两者有着明显的差别：分类具有顺序性和层次性，也就是说 `Foo, Bar` 不等于 `Bar, Foo`；而标签没有顺序和层次。
+
+``` yaml
+categories:
+- Diary
+tags:
+- PS3
+- Games
+```
+
+{% note warn 分类方法的分歧 %}
+如果您有过使用 WordPress 的经验，就很容易误解 Hexo 的分类方式。WordPress 支持对一篇文章设置多个分类，而且这些分类可以是同级的，也可以是父子分类。但是 Hexo 不支持指定多个同级分类。下面的指定方法：
+
+```yaml
+categories:
+  - Diary
+  - Life
+```
+
+会使分类`Life`成为`Diary`的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。
+
+如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。
+
+```yaml
+categories:
+- [Diary, PlayStation]
+- [Diary, Games]
+- [Life]
+```
+
+此时这篇文章同时包括三个分类： `PlayStation` 和 `Games` 分别都是父分类 `Diary` 的子分类，同时 `Life` 是一个没有子分类的分类。
+{% endnote %}
+
+## JSON Front-matter
+
+除了 YAML 外，你也可以使用 JSON 来编写 Front-matter，只要将 `---` 代换成 `;;;` 即可。
+
 ``` json
 "title": "Hello World",
 "date": "2013/7/13 20:46:25"
 ;;;
 ```
 
-### Settings & Their Default Values
-
-Setting | Description | Default
---- | --- | ---
-`layout` | Layout |
-`title` | Title | Filename (posts only)
-`date` | Published date | File created date
-`updated` | Updated date | File updated date
-`comments` | Enables comment feature for the post | true
-`tags` | Tags (Not available for pages) |
-`categories` | Categories (Not available for pages) |
-`permalink` | Overrides the default permalink of the post |
-`keywords` | The keywords that only used in meta tag and Open Graph (not recommended) |
-`excerpt` | Page excerpt in plain text. Use [this plugin](https://hexo.io/docs/tag-plugins#Post-Excerpt) to format the text |
-
-#### Categories & Tags
-
-Only posts support the use of categories and tags. Categories apply to posts in order, resulting in a hierarchy of classifications and sub-classifications. Tags are all defined on the same hierarchical level so the order in which they appear is not important.
-
-**Example**
-
-``` yaml
-categories:
-- Sports
-- Baseball
-tags:
-- Injury
-- Fight
-- Shocking
-```
-
-If you want to apply multiple category hierarchies, use a list of names instead of a single name. If Hexo sees any categories defined this way on a post, it will treat each category for that post as its own independent hierarchy.
-
-**Example**
-
-``` yaml
-categories:
-- [Sports, Baseball]
-- [MLB, American League, Boston Red Sox]
-- [MLB, American League, New York Yankees]
-- Rivalries
-```

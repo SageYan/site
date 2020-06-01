@@ -1,25 +1,25 @@
 ---
-title: One-Command Deployment
+title: 部署
 ---
 
-Hexo provides a fast and easy deployment strategy. You only need one single command to deploy your site to your server.
+{% youtube B0yVJ46CTR8 %}
 
-```bash
+Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。
+
+``` bash
 $ hexo deploy
 ```
 
-Install the necessary plugin(s) that is compatible with the deployment method provided by your server/repository.
+在开始之前，您必须先在 `_config.yml` 中修改参数，一个正确的部署配置中至少要有 `type` 参数，例如：
 
-Deployment is usually configured through **\_config.yml**. A valid configuration must have the `type` field. For example:
-
-```yaml
+``` yaml
 deploy:
   type: git
 ```
 
-You can use multiple deployers. Hexo will execute each deployer in order.
+您可同时使用多个 deployer，Hexo 会依照顺序执行每个 deployer。
 
-```yaml
+``` yaml
 deploy:
 - type: git
   repo:
@@ -29,79 +29,95 @@ deploy:
 
 Refer to the [Plugins](https://hexo.io/plugins/) list for more deployment plugins.
 
+{% note warn 缩进 %}
+YAML依靠缩进来确定元素间的从属关系。因此，请确保每个deployer的缩进长度相同，并且使用空格缩进。
+{% endnote %}
+
 ## Git
 
-1. Install [hexo-deployer-git].
+1. 安装 [hexo-deployer-git]。
 
-```bash
+``` bash
 $ npm install hexo-deployer-git --save
 ```
 
-2. Edit **\_config.yml** (with example values shown below as comments):
+2. 修改配置。
 
-```yaml
+``` yaml
 deploy:
   type: git
-  repo: <repository url> # https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
+  repo: <repository url> #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
   branch: [branch]
   message: [message]
 ```
 
-Option | Description | Default
+参数 | 描述 | 默认
 --- | --- | ---
-`repo` | URL of the target repository |
-`branch` | Branch name. | `gh-pages` (GitHub)<br>`coding-pages` (Coding.net)<br>`master` (others)
-`message` | Customize commit message. | `Site updated: {% raw %}{{ now('YYYY-MM-DD HH:mm:ss') }}{% endraw %}`
+`repo` | 库（Repository）地址 |
+`branch` | 分支名称 | `gh-pages` (GitHub)<br>`coding-pages` (Coding.net)<br>`master` (others)
+`message` | 自定义提交信息 | `Site updated: {% raw %}{{ now('YYYY-MM-DD HH:mm:ss') }}{% endraw %}`)
 `token` | Optional token value to authenticate with the repo. Prefix with `$` to read token from environment variable
 
-3. Deploy your site `hexo clean && hexo deploy`.
+3. 生成站点文件并推送至远程库。执行 `hexo clean && hexo deploy`。
   - You will be prompted with username and password of the target repository, unless you authenticate with a token or ssh key.
   - hexo-deployer-git does not store your username and password. Use [git-credential-cache](https://git-scm.com/docs/git-credential-cache) to store them temporarily.
-4. Navigate to your repository settings and change the "Pages" branch to `gh-pages` (or the branch specified in your config). The deployed site should be live on the link shown on the "Pages" setting.
+4. 登入 Github/BitBucket/Gitlab，请在库设置（Repository Settings）中将默认分支设置为`_config.yml`配置中的分支名称。稍等片刻，您的站点就会显示在您的Github Pages中。
+
+### 这一切是如何发生的？
+
+当执行 `hexo deploy` 时，Hexo 会将 `public` 目录中的文件和目录推送至 `_config.yml` 中指定的远端仓库和分支中，并且**完全覆盖**该分支下的已有内容。
+
+{% note warn For 使用 Git 管理站点目录的用户 %}
+由于 Hexo 的部署默认使用分支 `master`，所以如果你同时正在使用 Git 管理你的站点目录，你应当注意你的部署分支应当不同于写作分支。
+一个好的实践是将站点目录和 Pages 分别存放在两个不同的 Git 仓库中，可以有效避免相互覆盖。
+Hexo 在部署你的站点生成的文件时并不会更新你的站点目录。因此你应该手动提交并推送你的写作分支。
+{% endnote %}
+
+此外，如果您的 Github Pages 需要使用 CNAME 文件**自定义域名**，请将 CNAME 文件置于 `source` 目录下，只有这样 `hexo deploy` 才能将 CNAME 文件一并推送至部署分支。
 
 ## Heroku
 
-Install [hexo-deployer-heroku].
+安装 [hexo-deployer-heroku]。
 
-```bash
+``` bash
 $ npm install hexo-deployer-heroku --save
 ```
 
-Edit settings.
+修改配置。
 
-```yaml
+``` yaml
 deploy:
   type: heroku
   repo: <repository url>
   message: [message]
 ```
 
-| Option               | Description                                                                                                 |
-| -------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `repo`, `repository` | Heroku repository URL                                                                                       |
-| `message`            | Customize commit message (Default to `Site updated: {% raw %}{{ now('YYYY-MM-DD HH:mm:ss') }}{% endraw %}`) |
+参数 | 描述
+--- | ---
+`repo` | Heroku 库（Repository）地址
+`message` | 自定提交信息 (默认为 `Site updated: {% raw %}{{ now('YYYY-MM-DD HH:mm:ss') }}{% endraw %}`)
 
 ## Netlify
 
-[Netlify](https://www.netlify.com/) provides continuous deployment (Git-triggered builds), an intelligent global CDN, full DNS (including custom domains), automated HTTPS, asset acceleration, and a lot more. It is a unified platform that automates your code to create high-performance, easily maintainable sites and web apps.
+[Netlify](https://www.netlify.com/) 是一个提供网络托管的综合平台。它集持续集成（CI）CDN 自定义域名 HTTPS 持续部署（CD）等诸多功能于一身。您可以通过以下两种方式将Hexo站点部署到Netlify。
 
-There are two different ways to deploy your sites on Netlify. The most common way is to use the web UI. Go to the [create a new site page](https://app.netlify.com/start), select your project repo from GitHub, GitLab, or Bitbucket, and follow the prompts.
+首先，也是最通用的方式，就是使用Netlify提供的网页端用户界面。前往[新建一个网站页面](https://app.netlify.com/start)，选择需要关联的 Github/BitBucket/Gitlab 库，然后遵循网站提示。
 
-Alternatively, you can use Netlify's [Node based CLI](https://www.netlify.com/docs/cli/) tool to manage and deploy sites on Netlify without leaving your terminal.
+另一种方式是使用Netlify提供的命令行客户端工具 [Node based CLI](https://www.netlify.com/docs/cli/) 管理和部署您的站点。
 
-You can also add a [Deploy to Netlify Button](https://www.netlify.com/docs/deploy-button/) in your README.file to allow others to create a copy of your repository and be deployed to Netlify via one click.
+此外，您还可以在项目的README中增加一个 [部署至Netlify按钮](https://www.netlify.com/docs/deploy-button/)，这样其他用户在fork或clone了您的项目之后可以方便快捷地一键部署。
 
 ## Rsync
 
-Install [hexo-deployer-rsync].
+安装 [hexo-deployer-rsync]。
 
-```bash
+``` bash
 $ npm install hexo-deployer-rsync --save
 ```
 
-Edit settings.
+修改配置。
 
-```yaml
+``` yaml
 deploy:
   type: rsync
   host: <host>
@@ -113,49 +129,53 @@ deploy:
   ignore_errors: [true|false]
 ```
 
-| Option          | Description                     | Default |
-| --------------- | ------------------------------- | ------- |
-| `host`          | Address of remote host          |
-| `user`          | Username                        |
-| `root`          | Root directory of remote host   |
-| `port`          | Port                            | 22      |
-| `delete`        | Delete old files on remote host | true    |
-| `verbose`       | Display verbose messages        | true    |
-| `ignore_errors` | Ignore errors                   | false   |
+参数 | 描述 | 默认值
+--- | --- | ---
+`host` | 远程主机的地址 |
+`user` | 使用者名称 |
+`root` | 远程主机的根目录 |
+`port` | 端口 | 22
+`delete` | 删除远程主机上的旧文件 | true
+`verbose` | 显示调试信息 | true
+`ignore_errors` | 忽略错误 | false
+
+{% note info rsync部署模块的工作方式 %}
+需要注意的是，要求您提供的实际上是一个能通过SSH登陆远程主机的Linux用户。Hexo会自动处理关于rsync使用的一切操作。因此，您需要在远程主机上为您的Hexo站点建立一个用户，并允许其通过SSH登陆。不过，这里的`port`，的确是指rsync监听的端口，请确保防火墙打开了该端口。
+{% endnote %}
 
 ## OpenShift
 
-Install [hexo-deployer-openshift].
+安装 [hexo-deployer-openshift]。
 
-```bash
+``` bash
 $ npm install hexo-deployer-openshift --save
 ```
 
-Edit settings.
+修改配置。
 
-```yaml
+``` yaml
 deploy:
   type: openshift
   repo: <repository url>
   message: [message]
 ```
 
-| Option    | Description                                                                                                 |
-| --------- | ----------------------------------------------------------------------------------------------------------- |
-| `repo`    | OpenShift repository URL                                                                                    |
-| `message` | Customize commit message (Default to `Site updated: {% raw %}{{ now('YYYY-MM-DD HH:mm:ss') }}{% endraw %}`) |
+参数 | 描述
+--- | ---
+`repo` | OpenShift 库（Repository）地址
+`message` | 自定提交信息 (默认为 `Site updated: {% raw %}{{ now('YYYY-MM-DD HH:mm:ss') }}{% endraw %}`)
 
 ## FTPSync
 
-Install [hexo-deployer-ftpsync].
+安装 [hexo-deployer-ftpsync]。
 
-```bash
+``` bash
 $ npm install hexo-deployer-ftpsync --save
 ```
 
-Edit settings.
+修改配置。
 
-```yaml
+``` yaml
 deploy:
   type: ftpsync
   host: <host>
@@ -168,28 +188,32 @@ deploy:
   verbose: [true|false]
 ```
 
-| Option        | Description                               | Default |
-| ------------- | ----------------------------------------- | ------- |
-| `host`        | Address of remote host                    |
-| `user`        | Username                                  |
-| `pass`        | Password                                  |
-| `remote`      | Root directory of remote host             | `/`     |
-| `port`        | Port                                      | 21      |
-| `ignore`      | Ignore the files on either host or remote |
-| `connections` | Connections number                        | 1       |
-| `verbose`     | Display verbose messages                  | false   |
+参数 | 描述 | 默认值
+--- | --- | ---
+`host` | 远程主机的地址 |
+`user` | 使用者名称 |
+`pass` | 密码 |
+`remote` | 远程主机的根目录 | `/`
+`port` | 端口 | 21
+`ignore` | 忽略的文件或目录 |
+`connections` | 使用的连接数 | 1
+`verbose` | 显示调试信息 | false
+
+{% note warn FTP部署可能出现的问题 %}
+您可能需要预先通过其他方式将所有文件上传到远程主机中。否则初次使用ftpsync插件就可能出现报错。另外，由于FTP协议的特征，它每传送一个文件就需要一次握手，相对速度较慢。
+{% endnote %}
 
 ## SFTP
 
-Install [hexo-deployer-sftp]. Deploys the site via SFTP, allowing for passwordless connections using ssh-agent.
+安装 [hexo-deployer-sftp]。
 
-```bash
+``` bash
 $ npm install hexo-deployer-sftp --save
 ```
 
-Edit settings.
+修改配置。
 
-```yaml
+``` yaml
 deploy:
   type: sftp
   host: <host>
@@ -202,28 +226,28 @@ deploy:
   agent: [path/to/agent/socket]
 ```
 
-| Option       | Description                             | Default          |
-| ------------ | --------------------------------------- | ---------------- |
-| `host`       | Address of remote host                  |
-| `user`       | Username                                |
-| `pass`       | Password                                |
-| `remotePath` | Root directory of remote host           | `/`              |
-| `port`       | Port                                    | 22               |
-| `privateKey` | Path to a ssh private key               |
-| `passphrase` | Optional passphrase for the private key |
-| `agent`      | Path to the ssh-agent socket            | `$SSH_AUTH_SOCK` |
+参数 | 描述 | 默认值
+--- | --- | ---
+`host` | 远程主机的地址 |
+`user` | 使用者名称 |
+`pass` | 密码 |
+`remotePath` | 远程主机的根目录 | `/`
+`port` | 端口 | 22
+`privateKey` | ssh私钥的目录地址 |
+`passphrase` | （可省略）ssh私钥的密码短语 |
+`agent` | ssh套接字的目录地址 | `$SSH_AUTH_SOCK`
 
 ## ZEIT Now
 
-[ZEIT Now](https://zeit.co) is a cloud platform for websites and serverless APIs, that you can use to deploy your Hexo site to your personal domain (or a free `.now.sh` suffixed URL) with just a single command.
+[ZEIT Now](https://zeit.co) 是一个托管静态网站和 Serverless APIs 的云平台。你可以一键将你的 Hexo 网站部署到 ZEIT Now、并使用自己的域名或者由 ZEIT Now 提供的免费子域名 `now.sh`。
 
-1. Install [Now CLI](https://zeit.co/download):
+1. 安装 [Now CLI](https://zeit.co/download):
 
 ```bash
 $ npm i -g now
 ```
 
-2. Add a build script to your `package.json` file:
+2. 在 `package.json` 中添加 npm script:
 
 ```json
 {
@@ -233,35 +257,32 @@ $ npm i -g now
 }
 ```
 
-3. Deploy with a single command at the root of the project directory:
+3. 在 Hexo 所在目录执行下述指令：
 
 ```bash
 now
 ```
 
-Alternatively, you can click the deploy button below to create a new project:
+你也可以使用下面的按钮在 ZEIT Now 创建一个 Hexo 项目。
 
 [![Deploy Now](https://zeit.co/button)](https://zeit.co/new/hexo)
 
-## 21YunBox
+## 21云盒子
 
-1. On [21YunBox](https://www.21yunbox.com), setup up a new `Static Site` project from GitHub with the following settings:
+1. 在 [21云盒子](https://www.21yunbox.com) 中， 创建一个新的 `静态网页`，然后使用以下设置：
 
-- **Build command:** `yarn && hexo deploy`
-- **Publish directory:** `public`
+- **构建命令:** `yarn && hexo deploy`
+- **发布目录:** `public`
 
-2. Press Deploy Buton！
+2. 点击 "部署" 按钮！
 
-That’s it! Your app will be live on your 21YunBox URL as soon as the build finishes.
+样例已经部署在 [https://hexo.21yunbox.com/](https://hexo.21yunbox.com/).
 
-The sample app for `hexo` is deployed at [https://hexo.21yunbox.com/](https://hexo.21yunbox.com/).
+请查看 [用 21云盒子 部署一个 Hexo 样例](https://www.21yunbox.com/docs/#/deploy-hexo).
 
-For more detail, follow this guide at [https://www.21yunbox.com/docs/#/deploy-hexo](https://www.21yunbox.com/docs/#/deploy-hexo).
+## 其他方法
 
-
-## Other Methods
-
-All generated files are saved in the `public` folder. You can copy them to wherever you like.
+Hexo 生成的所有文件都放在 `public` 文件夹中，您可以将它们复制到您喜欢的地方。
 
 [hexo-deployer-git]: https://github.com/hexojs/hexo-deployer-git
 [hexo-deployer-heroku]: https://github.com/hexojs/hexo-deployer-heroku

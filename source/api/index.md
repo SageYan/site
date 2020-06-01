@@ -1,70 +1,19 @@
-title: API
 ---
-This documentation provides more detailed information about the API and will be particularly helpful for people who want to modify the Hexo source code or write new plugins. If you are interested in more basic usage of Hexo, please refer to the [docs](../docs) instead.
+title: MySQL 8.0的新增功能探索
+date: 2020-05-26T17:59:00.000Z
+categories:
+- [培训教程, MySQL高级管理教程]
+tags:
+- 培训
+- MySQL高级管理教程-探索类
+- MySQL8
+---
 
-Please note that this documentation is only valid for Hexo 3 and above.
+自从2005年Oracle收购InnoDB存储引擎开发商Innobase伊始，MySQL的命运已然注定。
 
-## Initialize
+随着MySQL 5.6开始的源码重构，MySQL已经驶上了快车道，MGR给了PXC致命一击，而Clone Plugin的推出宣判了MariaDB的死刑。MariaDB，或许只能拿来缅怀曾经的青春吧。
 
-First, we have to create a Hexo instance. A new instance takes two arguments: the root directory of the website, `base_dir`, and an object containing the initialization options. Next, we initialize this instance by calling the `init` method on it, which will then cause Hexo to load its configuration and plugins.
+- [MySQL 8.0中添加的功能](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-additions)
+- [MySQL 8.0中不推荐使用的功能](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-deprecations)
+- [MySQL 8.0中删除的功能](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals)
 
-``` js
-var Hexo = require('hexo');
-var hexo = new Hexo(process.cwd(), {});
-
-hexo.init().then(function(){
-  // ...
-});
-```
-
-Option | Description | Default
---- | --- | ---
-`debug` | Enable debug mode. Display debug messages in the terminal and save `debug.log` in the root directory. | `false`
-`safe` | Enable safe mode. Don't load any plugins. | `false`
-`silent` | Enable silent mode. Don't display any messages in the terminal. | `false`
-`config` | Specify the path of the configuration file. | `_config.yml`
-`draft` / `drafts`| Enable to add drafts to the posts list.<br> example: when you use `hexo.locals.get('posts')` | `render_drafts` of _config.yml 
-
-## Load Files
-
-Hexo provides two methods for loading files: `load` and `watch`. `load` is used for loading all files in the `source` folder as well as the theme data. `watch` does the same things `load` does, but will also start watching for file changes continuously.
-
-Both methods will load the list of files and pass them to the corresponding processors. After all files have been processed, they will call upon the generators to create the routes.
-
-``` js
-hexo.load().then(function(){
-  // ...
-});
-
-hexo.watch().then(function(){
-  // You can call hexo.unwatch() later to stop watching.
-});
-```
-
-## Execute Commands
-
-Any console command can be called explicitly using the `call` method on the Hexo instance. Such a call takes two arguments: the name of the console command, and an options argument. Different options are available for the different console commands.
-
-``` js
-hexo.call('generate', {}).then(function(){
-  // ...
-});
-```
-
-``` js
-hexo.call('list', { _: ['post'] }).then(function() {
-  // ...
-})
-```
-
-## Exit
-
-You should call the `exit` method upon successful or unsuccessful completion of a console command. This allows Hexo to exit gracefully and finish up important things such as saving the database.
-
-``` js
-hexo.call('generate').then(function(){
-  return hexo.exit();
-}).catch(function(err){
-  return hexo.exit(err);
-});
-```

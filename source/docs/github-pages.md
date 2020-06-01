@@ -1,17 +1,18 @@
 ---
-title: GitHub Pages
+title: 将 Hexo 部署到 GitHub Pages
 ---
 
-In this tutorial, we use [Travis CI](https://travis-ci.com/) to deploy Github Pages. It is free for open source repository, meaning your repository's `master` branch has to be public. Please skip to the [Private repository](#Private-repository) section if you prefer to keep the repo private, or prefer not to upload your source folder to GitHub.
+在本教程中，我们将会使用 [Travis CI](https://travis-ci.com/) 将 Hexo 博客部署到 GitHub Pages 上。Travis CI 对于开源 repository 是免费的，但是这意味着你的站点文件将会是公开的。如果你希望你的站点文件不被公开，请直接前往本文 [私有 Repository](#私有 Repository) 部分。
 
-1. Create a repo named <b>*username*.github.io</b>, where username is your username on GitHub. If you have already uploaded to other repo, rename the repo instead.
-2. Push the files of your Hexo folder to the repository. The `public/` folder is not (and should not be) uploaded by default, make sure the `.gitignore` file contains `public/` line. The folder structure should be roughly similar to [this repo](https://github.com/hexojs/hexo-starter), without the `.gitmodules` file.
-3. Add [Travis CI](https://github.com/marketplace/travis-ci) to your account.
-4. Go to [Applications settings](https://github.com/settings/installations), configure Travis CI to have access to the repo.
-5. You'll be redirected to Travis page.
-6. On a new tab, generate a [new token](https://github.com/settings/tokens) with **repo** scopes. Note down the token value.
-7. On the Travis page, go to your repo's setting. Under **Environment Variables**, put **GH_TOKEN** as name and paste the token onto value. Click Add to save it.
-8. Add `.travis.yml` file to your repo (alongside _config.yml & package.json) with the following content:
+1. 新建一个 repository。如果你希望你的站点能通过 `<你的 GitHub 用户名>.github.io` 域名访问，你的 repository 应该直接命名为 `<你的 GitHub 用户名>.github.io`。
+2. 将你的 Hexo 站点文件夹推送到 repository 中。默认情况下不应该 `public` 目录将不会被推送到 repository 中，你应该检查 `.gitignore` 文件中是否包含 `public` 一行，如果没有请加上。
+3. 将 [Travis CI](https://github.com/marketplace/travis-ci) 添加到你的 GitHub 账户中。
+4. 前往 GitHub 的 [Applications settings](https://github.com/settings/installations)，配置 Travis CI 权限，使其能够访问你的 repository。
+5. 你应该会被重定向到 Travis CI 的页面。如果没有，请 [手动前往](https://travis-ci.com/)。
+6. 在浏览器新建一个标签页，前往 GitHub [新建 Personal Access Token](https://github.com/settings/tokens)，只勾选 `repo` 的权限并生成一个新的 Token。Token 生成后请复制并保存好。
+7. 回到 Travis CI，前往你的 repository 的设置页面，在 **Environment Variables** 下新建一个环境变量，**Name** 为 `GH_TOKEN`，**Value** 为刚才你在 GitHub 生成的 Token。确保 **DISPLAY VALUE IN BUILD LOG** 保持 **不被勾选** 避免你的 Token 泄漏。点击 **Add** 保存。
+8. 在你的 Hexo 站点文件夹中新建一个 `.travis.yml` 文件：
+
 ```yml
 sudo: false
 language: node_js
@@ -32,26 +33,22 @@ deploy:
     branch: master
   local-dir: public
 ```
-9. Once Travis CI finish the deployment, the generated pages can be found in the `gh-pages` branch of your repository
-10. In your GitHub repo's setting, navigate to "GitHub Pages" section and change Source to **gh-pages branch**.
-11. Check the webpage at *username*.github.io.
 
-Note - if you specify a custom domain name with a `CNAME`, you need to add the `CNAME` file to the `source/` folder.
+9. 将 `.travis.yml` 推送到 repository 中。Travis CI 应该会自动开始运行，并将生成的文件推送到同一 repository 下的 `gh-pages` 分支下
+10. 在 GitHub 中前往你的 repository 的设置页面，修改 `GitHub Pages` 的部署分支为 `gh-pages`。
+11. 前往 `https://<你的 GitHub 用户名>.github.io` 查看你的站点是否可以访问。这可能需要一些时间。
 
 ## Project page
 
-If you prefer to have a project page on GitHub:
+如果你更希望你的站点部署在 `<你的 GitHub 用户名>.github.io` 的子目录中，你的 repository 需要直接命名为子目录的名字，这样你的站点可以通过 `https://<你的 GitHub 用户名>.github.io/<repository 的名字>` 访问。你需要检查你的 Hexo 配置文件，将 `url` 修改为 `https://<你的 GitHub 用户名>.github.io/<repository 的名字>`、将 `root` 的值修改为 `/<repository 的名字>/`
 
-1. Navigate to your repo on GitHub. Go to the **Settings** tab. Change the **Repository name** so your blog is available at <b>username.github.io/*repository*</b>,  **repository** can be any name, like *blog* or *hexo*.
-2. Edit your **_config.yml**, change the `root:` value to the `/<repository>/` (must starts and ends with a slash, without the brackets).
-3. Commit and push.
 
-## Private repository
+## 私有 Repository
 
-The following instruction is adapted from [one-command deployment](/docs/one-command-deployment) page.
+下面的指示基于 [一键部署](/docs/one-command-deployment) 编写。
 
-1. Install [hexo-deployer-git](https://github.com/hexojs/hexo-deployer-git).
-2. Add the following configurations to **_config.yml**, (remove existing lines if any)
+1. 安装 [hexo-deployer-git](https://github.com/hexojs/hexo-deployer-git).
+2. 在 **_config.yml**（如果有已存在的请删除）添加如下配置：
 
   ``` yml
   deploy:
@@ -61,10 +58,12 @@ The following instruction is adapted from [one-command deployment](/docs/one-com
     branch: gh-pages
   ```
 
-3. Run `hexo clean && hexo deploy`.
-4. Check the webpage at *username*.github.io.
+3. 运行 `hexo clean && hexo deploy` 。
+4. 查看 *username*.github.io 上的网页是否部署成功。
 
-## Useful links
+## 有用的参考链接
 
-- [GitHub Pages](https://help.github.com/categories/github-pages-basics/)
-- [Travis CI Docs](https://docs.travis-ci.com/user/tutorial/)
+- [GitHub Pages 使用文档](https://help.github.com/categories/github-pages-basics/)
+- [Travis CI 使用文档](https://docs.travis-ci.com/user/tutorial/)
+- [Awesome Hexo](https://github.com/hexojs/awesome-hexo)
+- [在百度上搜索 "Hexo GitHub"](https://www.baidu.com/s?wd=Hexo%20GitHub)

@@ -1,10 +1,11 @@
 ---
-title: Setup
+title: 建站
 ---
 
-{% youtube 0m2HnATkHOk %}
+{% youtube xvIRGmKWpFM %}
 
-Once Hexo is installed, run the following commands to initialize Hexo in the target `<folder>`.
+
+安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。
 
 ``` bash
 $ hexo init <folder>
@@ -12,7 +13,7 @@ $ cd <folder>
 $ npm install
 ```
 
-Once initialized, here's what your project folder will look like:
+新建完成后，指定文件夹的目录如下：
 
 ``` plain
 .
@@ -27,11 +28,11 @@ Once initialized, here's what your project folder will look like:
 
 ### _config.yml
 
-Site [configuration](configuration.html) file. You can configure most settings here.
+网站的 [配置](configuration.html) 信息，您可以在此配置大部分的参数。
 
 ### package.json
 
-Application data. The [EJS](https://ejs.co/), [Stylus](http://learnboost.github.io/stylus/) and [Markdown](http://daringfireball.net/projects/markdown/) renderers are installed by default. If you want, you can uninstall them later.
+应用程序的信息。[EJS](https://ejs.co/), [Stylus](http://learnboost.github.io/stylus/) 和 [Markdown](http://daringfireball.net/projects/markdown/) renderer 已默认安装，您可以自由移除。
 
 ``` json package.json
 {
@@ -57,12 +58,16 @@ Application data. The [EJS](https://ejs.co/), [Stylus](http://learnboost.github.
 
 ### scaffolds
 
-[Scaffold](writing.html#Scaffolds) folder. When you create a new post, Hexo bases the new file on the scaffold.
+[模版](writing.html) 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件。
+
+Hexo的模板是指在新建的文章文件中默认填充的内容。例如，如果您修改scaffold/post.md中的Front-matter内容，那么每次新建一篇文章时都会包含这个修改。
 
 ### source
 
-Source folder. This is where you put your site's content. Hexo ignores hidden files and files or folders whose names are prefixed with `_` (underscore) - except the `_posts` folder. Renderable files (e.g. Markdown, HTML) will be processed and put into the `public` folder, while other files will simply be copied.
+资源文件夹是存放用户资源的地方。除 `_posts` 文件夹之外，开头命名为 `_` (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 `public` 文件夹，而其他文件会被拷贝过去。
 
 ### themes
 
-[Theme](themes.html) folder. Hexo generates a static website by combining the site contents with the theme.
+[主题](themes.html) 文件夹。Hexo 会根据主题来生成静态页面。
+
+

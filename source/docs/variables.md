@@ -1,98 +1,94 @@
 ---
-title: Variables
+title: 变量
 ---
+### 全局变量
 
-{% youtube T9oAax-IRw0 %}
-
-### Global Variables
-
-Variable | Description | Type
+变量 | 描述 | 类型
 --- | --- | ---
-`site` | Sitewide information. | `object`; see [Site Variables]
-`page` | Page specific information and custom variables set in front-matter. | `object`; see [Page Variables]
-`config` | Site configuration. | `object` (your site's _config file)
-`theme` | Theme configuration. Inherits from site configuration. | `object` (your theme's _config file)
-`_` (single underscore) | Lodash library | see [Lodash](https://lodash.com/  'Lodash') documentation
-`path` | Path of current page | `string`
-`url` | Full URL of current page | `string`
-`env` | Environment variables | ???
+`site` | [网站变量](#网站变量) | `object`; 见 [网站变量](#网站变量)
+`page` | 针对该页面的内容以及 front-matter 中自定义的变量。 | `object`; 见 [页面变量](#页面变量)
+`config` | 网站配置 | `object` (站点的配置文件)
+`theme` | 主题配置。继承自网站配置。 | `object` (主题配置文件)
+`_` (单下划线) | [Lodash](https://lodash.com/  'Lodash') 函数库 | [Lodash](https://lodash.com/  'Lodash') 文档
+`path` | 当前页面的路径（不含根路径）| `string`
+`url` | 当前页面的完整网址 | `string`
+`env` | 环境变量 | ???
 
-### Site Variables
+### 网站变量
 
-Variable | Description | Type
+变量 | 描述 | 类型
 --- | --- | ---
-`site.posts` | All posts | `array` of `post` objects
-`site.pages` | All pages | `array` of `page` objects
-`site.categories` | All categories | `array` of ???
-`site.tags` | All tags | `array` of ???
+`site.posts` | 所有文章 | `array` of `post` objects
+`site.pages` | 所有分页 | `array` of `page` objects
+`site.categories` | 所有分类 | `object`，包含了站点全部的分类
+`site.tags` | 所有标签 | `array`，包含了站点全部的标签
 
-### Page Variables
+### 页面变量
 
-**Article (`page`)**
+**页面（`page`）**
 
-Variable | Description | Type
+变量 | 描述 | 类型
 --- | --- | ---
-`page.title` | Article title | `string`
-`page.date` | Article created date | [Moment.js] object
-`page.updated` | Article last updated date | [Moment.js] object
-`page.comments` | Comment enabled or not | `boolean`
-`page.layout` | Layout name | `string`
-`page.content` | The full processed content of the article | `string`
-`page.excerpt` | Article excerpt | `string`
-`page.more` | Contents except article excerpt | `string`
-`page.source` | The path of the source file | `string`
-`page.full_source` | Full path of the source file | `string`
-`page.path` | The URL of the article without root URL. We usually use `url_for(page.path)` in theme. | `string`
-`page.permalink` | Full (encoded) URL of the article | `string`
-`page.prev` | The previous post, `null` if the post is the first post | ???
-`page.next` | The next post, `null` if the post is the last post | ???
-`page.raw` | The raw data of the article | ???
-`page.photos` | The photos of the article (Used in gallery posts) | array of ???
-`page.link` | The external link of the article (Used in link posts) | `string`
+`page.title` | 页面标题 | `string`
+`page.date` | 页面建立日期 | [Moment.js] 对象
+`page.updated` | 页面更新日期 | [Moment.js] 对象
+`page.comments` | 留言是否开启 | `boolean`
+`page.layout` | 布局名称 | `string`
+`page.content` | 页面的完整内容 | `string`
+`page.excerpt` | 页面摘要 | `string`
+`page.more` | 除了页面摘要的其余内容 | `string`
+`page.source` | 页面原始路径 | `string`
+`page.full_source` | 页面的完整原始路径 | `string`
+`page.path` | 页面网址（不含根路径）。我们通常在主题中使用 `url_for(page.path)`。| `string`
+`page.permalink` | 页面的完整网址 | `string`
+`page.prev` | 上一个页面。如果此为第一个页面则为 `null`。| `string` or `null`
+`page.next` | 下一个页面。如果此为最后一个页面则为 `null`。| `string` or `null`
+`page.raw` | 文章的原始内容 | ???
+`page.photos` | 文章的照片（用于相簿）| `array`
+`page.link` | 文章的外部链接（用于链接文章）| `string`
 
-**Post (`post`):** Same as `page` layout but add the following variables.
+**文章 (`post`):** 与 `page` 布局相同，但新增以下变量。
 
-Variable | Description | Type
+变量 | 描述 | 类型
 --- | --- | ---
-`page.published` | True if the post is not a draft | `boolean`
-`page.categories` | All categories of the post | `array` of ???
-`page.tags` | All tags of the post | `array` of ???
+`page.published` | 如果该文章已发布则为 true | `boolean`
+`page.categories` | 该文章的所有分类 |  `array` of ???
+`page.tags` | 该文章的所有标签 | `array` of ???
 
-**Home (`index`)**
+**首页（`index`）**
 
-Variable | Description | Type
+变量 | 描述 | 类型
 --- | --- | ---
-`page.per_page` | Posts displayed per page | `number`
-`page.total` | Total number of pages | `number`
-`page.current` | Current page number | `number`
-`page.current_url` | The URL of current page | `string`
-`page.posts` | Posts in this page ([Data Model](https://hexojs.github.io/warehouse/)) | `object`
-`page.prev` | Previous page number. `0` if the current page is the first. | `number`
-`page.prev_link` | The URL of previous page. `''` if the current page is the first. | `string`
-`page.next` | Next page number. `0` if the current page is the last. | `number`
-`page.next_link` | The URL of next page. `''` if the current page is the last. | `string`
-`page.path` | The URL of current page without root URL. We usually use `url_for(page.path)` in theme. | `string`
+`page.per_page` | 每页显示的文章数量 | `number`
+`page.total` | 总页数 | `number`
+`page.current` | 目前页数 | `number`
+`page.current_url` | 目前分页的网址 | `string`
+`page.posts` | 本页文章 ([Data Model](https://hexojs.github.io/warehouse/)) | `object`
+`page.prev` | 上一页的页数。如果此页是第一页的话则为 `0`。 | `number`
+`page.prev_link` | 上一页的网址。如果此页是第一页的话则为 `''`。 | `string`
+`page.next` | 下一页的页数。如果此页是最后一页的话则为 `0`。 | `number`
+`page.next_link` | 下一页的网址。如果此页是最后一页的话则为 `''`。 | `string`
+`page.path` | 当前页面的路径（不含根目录）。我们通常在主题中使用 `url_for(page.path)`。| `string`
 
-**Archive (`archive`):** Same as `index` layout but add the following variables.
+**归档 (`archive`)**：与 `index` 布局相同，但新增以下变量。
 
-Variable | Description | Type
+变量 | 描述 | 类型
 --- | --- | ---
-`page.archive` | Equals `true` | `boolean`
-`page.year` | Archive year (4-digit) | `number`
-`page.month` | Archive month (2-digit without leading zeros) | `number`
+`page.archive` | 等于 `true` | `boolean`
+`page.year` | 年份归档 (4位) | `number`
+`page.month` | 月份归档 (没有前导零的2位数) | `number`
 
-**Category (`category`):** Same as `index` layout but add the following variables.
+**分类 (`category`)**：与 `index` 布局相同，但新增以下变量。
 
-Variable | Description | Type
+变量 | 描述 | 类型
 --- | --- | ---
-`page.category` | Category name | `string`
+`page.category` | 分类名称 | `string`
 
-**Tag (`tag`):** Same as `index` layout but add the following variables.
+**标签 (`tag`)**：与 `index` 布局相同，但新增以下变量。
 
-Variable | Description | Type
+变量 | 描述 | 类型
 --- | --- | ---
-`page.tag` | Tag name | `string`
+`page.tag` | 标签名称 | `string`
 
+[Lodash]: http://lodash.com/
 [Moment.js]: http://momentjs.com/
-[Site Variables]: #Site-Variables
-[Page Variables]: #Page-Variables

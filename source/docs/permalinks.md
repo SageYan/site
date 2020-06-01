@@ -1,36 +1,36 @@
 ---
-title: Permalinks
+title: 永久链接（Permalinks）
 ---
-You can specify the permalinks for your site in `_config.yml` or in the front-matter for each post.
+您可以在 `_config.yml` 配置中调整网站的永久链接或者在每篇文章的 Front-matter 中指定。
 
-### Variables
+### 变量
 
-Besides the following variables, you can use any attributes in the permalink.
+除了下列变量外，您还可使用 Front-matter 中的所有属性。
 
-Variable | Description
+变量 | 描述
 --- | ---
-`:year` | Published year of posts (4-digit)
-`:month` | Published month of posts (2-digit)
-`:i_month` | Published month of posts (Without leading zeros)
-`:day` | Published day of posts (2-digit)
-`:i_day` | Published day of posts (Without leading zeros)
-`:hour` | Published hour of posts (2-digit)
-`:minute` | Published minute of posts (2-digit)
-`:title` | Filename
-`:post_title` | Post title
-`:id` | Post ID (_not persistent across [cache reset](/docs/commands#clean)_)
-`:category` | Categories. If the post is uncategorized, it will use the `default_category` value.
+`:year` | 文章的发表年份（4 位数）
+`:month` | 文章的发表月份（2 位数）
+`:i_month` | 文章的发表月份（去掉开头的零）
+`:day` | 文章的发表日期 (2 位数)
+`:i_day` | 文章的发表日期（去掉开头的零）
+`:hour` | 文章发表时的小时 (2 位数)
+`:minute` | 文章发表时的分钟 (2 位数)
+`:title` | 文件名称
+`:post_title` | 文章标题
+`:id` | 文章 ID (_not persistent across [cache reset](/zh-cn/docs/commands#clean)_)
+`:category` | 分类。如果文章没有分类，则是 `default_category` 配置信息。
 
-You can define the default value of each variable in the permalink through the `permalink_defaults` setting:
+您可在 `permalink_defaults` 参数下调整永久链接中各变量的默认值：
 
 ``` yaml
 permalink_defaults:
   lang: en
 ```
 
-### Examples
+### 示例
 
-Given a post named `hello-world.md` in the `source/_posts` folder with the following content.
+假设 `source/_posts` 文件夹中有个 `hello-world.md`，包含以下内容：
 
 ``` yaml
 title: Hello World
@@ -40,29 +40,29 @@ categories:
 - bar
 ```
 
-Setting | Result
+参数 | 结果
 --- | ---
 `:year/:month/:day/:title/` | 2013/07/14/hello-world/
 `:year-:month-:day-:title.html` | 2013-07-14-hello-world.html
 `:category/:title/` | foo/bar/hello-world/
 
-### Multi-language Support
+### 多语种支持
 
-To create a multi-language site, you can modify the `new_post_name` and `permalink` settings like this:
+若要建立一个多语种的网站，您可修改 `new_post_name` 和 `permalink` 参数，如下：
 
 ``` yaml
 new_post_name: :lang/:title.md
 permalink: :lang/:title/
 ```
 
-When you create a new post, the post will be saved to:
+当您建立新文章时，文章会被储存到：
 
 ``` bash
 $ hexo new "Hello World" --lang tw
 # => source/_posts/tw/Hello-World.md
 ```
 
-and the URL will be:
+而网址会是：
 
 ``` plain
 http://localhost:4000/tw/hello-world/

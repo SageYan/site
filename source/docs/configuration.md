@@ -1,185 +1,177 @@
 ---
-title: Configuration
+title: 配置
 ---
-You can modify site settings in `_config.yml` or in an [alternate config file](#Using-an-Alternate-Config).
+您可以在 `_config.yml` 中修改大部分的配置。
 
-### Site
+{% youtube A0Enyn70jKU %}
 
-Setting | Description
+## 网站
+
+参数 | 描述
 --- | ---
-`title` | The title of your website
-`subtitle` | The subtitle of your website
-`description` | The description of your website
-`keywords` | The keywords of your website. Separate multiple keywords with commas `,`.
-`author` | Your name
-`language` | The language of your website. Use a [2-letter ISO-639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) or optionally [its variant](/docs/internationalization). Default is `en`.
-`timezone` | The timezone of your website. Hexo uses the setting on your computer by default. You can find the list of available timezones [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Some examples are `America/New_York`, `Japan`, and `UTC`.
+`title` | 网站标题
+`subtitle` | 网站副标题
+`description` | 网站描述
+`keywords` | 网站的关键词。使用半角逗号 `,` 分隔多个关键词。
+`author` | 您的名字
+`language` | 网站使用的语言。对于简体中文用户来说，使用不同的主题可能需要设置成不同的值，请参考你的主题的文档自行设置，常见的有 `zh-Hans`和 `zh-CN`。
+`timezone` | 网站时区。Hexo 默认使用您电脑的时区。请参考 [时区列表](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) 进行设置，如 `America/New_York`, `Japan`, 和 `UTC` 。一般的，对于中国大陆地区可以使用 `Asia/Shanghai`。
 
-### URL
+其中，`description`主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词。`author`参数用于主题显示文章的作者。
 
-Setting | Description | Default
+## 网址
+
+参数 | 描述 | 默认值
 --- | --- | ---
-`url` | The URL of your website |
-`root` | The root directory of your website |
-`permalink` | The [permalink](permalinks.html) format of articles | `:year/:month/:day/:title/`
-`permalink_defaults` | Default values of each segment in permalink |
-`pretty_urls` | Rewrite the [`permalink`](variables.html) variables to pretty URLs |
-`pretty_urls.trailing_index` | Trailing `index.html`, set to `false` to remove it  | `true`
-`pretty_urls.trailing_html` | Trailing `.html`, set to `false` to remove it (_does not apply to trailing `index.html`_)  | `true`
+`url` | 网址 |
+`root` | 网站根目录 |
+`permalink` | 文章的 [永久链接](permalinks.html) 格式 | `:year/:month/:day/:title/`
+`permalink_defaults` | 永久链接中各部分的默认值 |
+`pretty_urls` | 改写 [`permalink`](variables.html) 的值来美化 URL |
+`pretty_urls.trailing_index` | 是否在永久链接中保留尾部的 `index.html`，设置为 `false` 时去除 | `true`
+`pretty_urls.trailing_html` | 是否在永久链接中保留尾部的 `.html`, 设置为 `false` 时去除 (_对尾部的 `index.html`无效_)  | `true`
 
-{% note info Website in subdirectory %}
-If your website is in a subdirectory (such as `http://example.org/blog`) set `url` to `http://example.org/blog` and set `root` to `/blog/`.
+{% note info 网站存放在子目录 %}
+如果您的网站存放在子目录中，例如 `http://yoursite.com/blog`，则请将您的 `url` 设为 `http://yoursite.com/blog` 并把 `root` 设为 `/blog/`。
 {% endnote %}
 
-Examples:
+例如：
 
 ``` yaml
-# e.g. page.permalink is http://example.com/foo/bar/index.html
+# 比如，一个页面的永久链接是 http://example.com/foo/bar/index.html
 pretty_urls:
   trailing_index: false
-# becomes http://example.com/foo/bar/
+# 此时页面的永久链接会变为 http://example.com/foo/bar/
 ```
 
-### Directory
+## 目录
 
-Setting | Description | Default
+参数 | 描述 | 默认值
 --- | --- | ---
-`source_dir` | Source folder. Where your content is stored | `source`
-`public_dir` | Public folder. Where the static site will be generated | `public`
-`tag_dir` | Tag directory | `tags`
-`archive_dir` | Archive directory | `archives`
-`category_dir` | Category directory | `categories`
-`code_dir` | Include code directory (subdirectory of `source_dir`) | `downloads/code`
-`i18n_dir` | i18n directory | `:lang`
-`skip_render` | Paths that will be copied to `public` raw, without being rendered. You can use [glob expressions](https://github.com/micromatch/micromatch#extended-globbing) for path matching.
+`source_dir` | 资源文件夹，这个文件夹用来存放内容。 | `source`
+`public_dir` | 公共文件夹，这个文件夹用于存放生成的站点文件。 | `public`
+`tag_dir` | 标签文件夹 | `tags`
+`archive_dir` | 归档文件夹 | `archives`
+`category_dir` | 分类文件夹 | `categories`
+`code_dir` | Include code 文件夹，`source_dir` 下的子目录 | `downloads/code`
+`i18n_dir` | 国际化（i18n）文件夹 | `:lang`
+`skip_render` | 跳过指定文件的渲染。匹配到的文件将会被不做改动地复制到 `public` 目录中。您可使用 [glob 表达式](https://github.com/micromatch/micromatch#extended-globbing)来匹配路径。 |
 
-Examples:
+例如：
 
 ``` yaml
 skip_render: "mypage/**/*"
-# will output `source/mypage/index.html` and `source/mypage/code.js` without altering them.
-
-## This also can be used to exclude posts,
+# 将会直接将 `source/mypage/index.html` 和 `source/mypage/code.js` 不做改动地输出到 'public' 目录
+# 你也可以用这种方法来跳过对指定文章文件的渲染
 skip_render: "_posts/test-post.md"
-# will ignore the `source/_posts/test-post.md`.
+# 这将会忽略对 'test-post.md' 的渲染
 ```
 
-### Writing
+{% note info 提示 %}
+如果您刚刚开始接触 Hexo，通常没有必要修改这一部分的值。
+{% endnote %}
 
-Setting | Description | Default
+## 文章
+
+参数 | 描述 | 默认值
 --- | --- | ---
-`new_post_name` | The filename format for new posts | `:title.md`
-`default_layout` | Default layout | `post`
-`titlecase` | Transform titles into title case? | `false`
-`external_link` | Open external links in a new tab? |
-`external_link.enable` | Open external links in a new tab? | `true`
-`external_link.field` | Applies to the whole `site` or `post` only | `site`
-`external_link.exclude` | Exclude hostname. Specify subdomain when applicable, including `www` | `[]`
-`filename_case` | Transform filenames to `1` lower case; `2` upper case | `0`
-`render_drafts` | Display drafts? | `false`
-`post_asset_folder` | Enable the [Asset Folder](asset-folders.html)? | `false`
-`relative_link` | Make links relative to the root folder? | `false`
-`future` | Display future posts? | `true`
-`highlight` | Code block syntax highlight settings, powered by [highlight.js](https://highlightjs.org/) |
-`highlight.enable` | Enable syntax highlight | `true`
-`highlight.auto_detect` | Enable auto-detection if no language is specified | `false`
-`highlight.line_number` | Display line number<br>_Enabling this option will also enable `wrap` option_ | `true`
-`highlight.tab_replace` | Replace tabs by n space(s); if the value is empty, tabs won't be replaced | `''`
+`new_post_name` | 新文章的文件名称 | :title.md
+`default_layout` | 预设布局 | post
+`auto_spacing` | 在中文和英文之间加入空格 | false
+`titlecase` | 把标题转换为 title case | false
+`external_link` | 在新标签中打开链接 | true
+`external_link.enable` | 在新标签中打开链接 | `true`
+`external_link.field` | 对整个网站（`site`）生效或仅对文章（`post`）生效 | `site`
+`external_link.exclude` | 需要排除的域名。主域名和子域名如 `www` 需分别配置 | `[]`
+`filename_case` | 把文件名称转换为 (1) 小写或 (2) 大写 | 0
+`render_drafts` | 显示草稿 | false
+`post_asset_folder` | 启动 [Asset 文件夹](asset-folders.html) | false
+`relative_link` | 把链接改为与根目录的相对位址 | false
+`future` | 显示未来的文章 | true
+`highlight` | 代码块的设置 |
+`highlight.enable` | 开启代码块高亮 | `true`
+`highlight.auto_detect` | 如果未指定语言，则启用自动检测 | `false`
+`highlight.line_number` | 显示行数<br>_Enabling this option will also enable `wrap` option_ | `true`
+`highlight.tab_replace` | 用 n 个空格替换 tabs；如果值为空，则不会替换 tabs | `''`
 `highlight.wrap` | Wrap the code block in [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table) | `true`
 `highlight.hljs` | Use the `hljs-*` prefix for CSS classes | `false`
 
-### Home page setting
+{% note info 相对地址 %}
+默认情况下，Hexo 生成的超链接都是绝对地址。例如，如果您的网站域名为 `example.com`,您有一篇文章名为 `hello`，那么绝对链接可能像这样：`http://example.com/hello.html`，它是**绝对**于域名的。相对链接像这样：`/hello.html`，也就是说，无论用什么域名访问该站点，都没有关系，这在进行反向代理时可能用到。通常情况下，建议使用绝对地址。
+{% endnote %}
 
-Setting | Description | Default
+## 分类 & 标签
+
+参数 | 描述 | 默认值
 --- | --- | ---
-`index_generator` | Generate an archive of posts, powered by [hexo-generator-index](https://github.com/hexojs/hexo-generator-index) |
-`index_generator.path` | Root path for your blog's index page | `''`
-`index_generator.per_page` | Posts displayed per page. | `10`
-`index_generator.order_by` | Posts order. Order by descending date (new to old) by default. | `-date`
-`index_generator.pagination_dir` | URL format, see [Pagination](#Pagination) setting below | `page`
+`default_category` | 默认分类 | `uncategorized`
+`category_map` | 分类别名 |
+`tag_map` | 标签别名 |
 
-### Category & Tag
+## 日期 / 时间格式
 
-Setting | Description | Default
+Hexo 使用 [Moment.js](http://momentjs.com/) 来解析和显示时间。
+
+参数 | 描述 | 默认值
 --- | --- | ---
-`default_category` | Default category | `uncategorized`
-`category_map` | Category slugs |
-`tag_map` | Tag slugs |
+`date_format` | 日期格式 | `YYYY-MM-DD`
+`time_format` | 时间格式 | `HH:mm:ss`
+`use_date_for_updated` | 启用以后，如果 Front Matter 中没有指定 `updated`， [`post.updated`](/zh-cn/docs/variables#页面变量) 将会使用 `date` 的值而不是文件的创建时间。在 Git 工作流中这个选项会很有用 | `true`  
 
-### Date / Time format
+## 分页
 
-Hexo uses [Moment.js](http://momentjs.com/) to process dates.
-
-Setting | Description | Default
+参数 | 描述 | 默认值
 --- | --- | ---
-`date_format` | Date format | `YYYY-MM-DD`
-`time_format` | Time format | `HH:mm:ss`
-`use_date_for_updated` | Use the date of the post in [`post.updated`](/docs/variables#Page-Variables) if no updated date is provided in the front-matter. Typically used with Git workflow | `true`
+`per_page` | 每页显示的文章量 (0 = 关闭分页功能) | `10`
+`pagination_dir` | 分页目录 | `page`
 
-### Pagination
+## 扩展
 
-Setting | Description | Default
---- | --- | ---
-`per_page` | Number of posts displayed on each page. `0` disables pagination | `10`
-`pagination_dir` | URL format | `page`
-
-Examples:
-``` yaml
-pagination_dir: 'page'
-# http://yoursite.com/page/2
-
-pagination_dir: 'awesome-page'
-# http://yoursite.com/awesome-page/2
-```
-
-### Extensions
-
-Setting | Description
+参数 | 描述
 --- | ---
-`theme` | Theme name. `false` disables theming
-`theme_config` | Theme configuration. Include any custom theme settings under this key to override theme defaults.
-`deploy` | Deployment settings
-`meta_generator` | [Meta generator](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#Attributes) tag. `false` disables injection of the tag.
+`theme` | 当前主题名称。值为`false`时禁用主题
+`theme_config` | 主题的配置文件。在这里放置的配置会覆盖主题目录下的 `_config.yml` 中的配置
+`deploy` | 部署部分的设置
+`meta_generator` | [Meta generator](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta#%E5%B1%9E%E6%80%A7) 标签。 值为 `false` 时 Hexo 不会在头部插入该标签
 
+### 包括或不包括目录和文件
 
-### Include/Exclude Files or Folders
-
-Use the following options to explicitly process or ignore certain files/folders. Support [glob expressions](https://github.com/micromatch/micromatch#extended-globbing) for path matching.
+在 Hexo 配置文件中，通过设置 include/exclude 可以让 Hexo 进行处理或忽略某些目录和文件夹。你可以使用 [glob 表达式](https://github.com/isaacs/minimatch) 对目录和文件进行匹配。
 
 `include` and `exclude` options only apply to the `source/` folder, whereas `ignore` option applies to all folders.
 
-Setting | Description
+参数 | 描述
 --- | ---
-`include` | Include hidden files (including files/folders with a name that start with an underscore, with an exception*)
-`exclude` | Exclude files/folders
+`include` | Hexo 默认会忽略隐藏文件和文件夹（包括名称以下划线和 `.` 开头的文件和文件夹，Hexo 的 `_posts` 和 `_data` 等目录除外）。通过设置此字段将使 Hexo 处理他们并将它们复制到 `source` 目录下。
+`exclude` | Hexo 会忽略这些文件和目录
 `ignore` | Ignore files/folders
 
-Examples:
+举例：
+
 ```yaml
 # Include/Exclude Files/Folders
 include:
   - ".nojekyll"
-  # Include 'source/css/_typing.css'.
+  # 包括 'source/css/_typing.css'
   - "css/_typing.css"
-  # Include any file in 'source/_css/'.
+  # 包括 'source/_css/' 中的任何文件，但不包括子目录及其其中的文件。
   - "_css/*"
-  # Include any file and subfolder in 'source/_css/'.
+  # 包含 'source/_css/' 中的任何文件和子目录下的任何文件
   - "_css/**/*"
 
 exclude:
-  # Exclude 'source/js/test.js'.
+  # 不包括 'source/js/test.js'
   - "js/test.js"
-  # Exclude any file in 'source/js/'.
+  # 不包括 'source/js/' 中的文件、但包括子目录下的所有目录和文件
   - "js/*"
-  # Exclude any file and subfolder in 'source/js/'.
+  # 不包括 'source/js/' 中的文件和子目录下的任何文件
   - "js/**/*"
-  # Exclude any file with filename that starts with 'test' in 'source/js/'.
+  # 不包括 'source/js/' 目录下的所有文件名以 'test' 开头的文件，但包括其它文件和子目录下的单文件
   - "js/test*"
-  # Exclude any file with filename that starts with 'test' in 'source/js/' and its subfolders.
+  # 不包括 'source/js/' 及其子目录中任何以 'test' 开头的文件
   - "js/**/test*"
-  # Do not use this to exclude posts in the 'source/_posts/'.
-  # Use skip_render for that. Or prepend an underscore to the filename.
-  # - "_posts/hello-world.md" # Does not work.
+  # 不要用 exclude 来忽略 'source/_posts/' 中的文件。你应该使用 'skip_render'，或者在要忽略的文件的文件名之前加一个下划线 '_'
+  # 在这里配置一个 - "_posts/hello-world.md" 是没有用的。
 
 ignore:
   # Ignore any folder named 'foo'.
@@ -190,51 +182,54 @@ ignore:
   - "**/themes/**/foo"
 ```
 
-Each value in the list must be enclosed with single/double quotes.
+列表中的每一项都必须用单引号或双引号包裹起来。
 
-`include:` and `exclude:` do not apply to the `themes/` folder. Either use `ignore:` or alternatively, prepend an underscore to the file/folder name to exclude.
+`include` 和 `exclude` 并不适用于 `themes/` 目录下的文件。如果需要忽略 `themes/` 目录下的部分文件或文件夹，可以使用 `ignore` 或在文件名之前添加下划线 `_`。
 
-\* Notable exception is the `source/_posts` folder, but any file or folder with a name that starts with an underscore under that folder would still be ignored. Using `include:` rule in that folder is not recommended.
+### 使用代替配置文件
 
-### Using an Alternate Config
+可以在 hexo-cli 中使用 `--config` 参数来指定自定义配置文件的路径。你可以使用一个 YAML 或 JSON 文件的路径，也可以使用逗号分隔（无空格）的多个 YAML 或 JSON 文件的路径。例如：
 
-A custom config file path can be specified by adding the `--config` flag to your `hexo` commands with a path to an alternate YAML or JSON config file, or a comma-separated list (no spaces) of multiple YAML or JSON files.
-
-``` bash
+```bash
 # use 'custom.yml' in place of '_config.yml'
 $ hexo server --config custom.yml
 
-# use 'custom.yml' & 'custom2.json', prioritizing 'custom2.json'
-$ hexo server --config custom.yml,custom2.json
+# use 'custom.yml' & 'custom2.json', prioritizing 'custom3.yml', then 'custom2.json'
+$ hexo generate --config custom.yml,custom2.json,custom3.yml
 ```
 
-Using multiple files combines all the config files and saves the merged settings to `_multiconfig.yml`. The later values take precedence. It works with any number of JSON and YAML files with arbitrarily deep objects. Note that **no spaces are allowed in the list**.
+当你指定了多个配置文件以后，Hexo 会按顺序将这部分配置文件合并成一个 `_multiconfig.yml`。如果遇到重复的配置，排在后面的文件的配置会覆盖排在前面的文件的配置。这个原则适用于任意数量、任意深度的 YAML 和 JSON 文件。
 
-For instance, in the above example if `foo: bar` is in `custom.yml`, but `"foo": "dinosaur"` is in `custom2.json`, `_multiconfig.yml` will contain `foo: dinosaur`.
+例如，使用 `--options` 指定了两个自定义配置文件：
 
-### Overriding Theme Config
+```
+$ hexo generate --config custom.yml,custom2.json
+```
 
-Hexo themes are independent projects, with separate `_config.yml` files.
+如果 `custom.yml` 中指定了 `foo: bar`，在 custom2.json 中指定了 `"foo": "dinosaur"`，那么在 `_multiconfig.yml` 中你会得到 `foo: dinosaur`。
 
-Instead of forking a theme, and maintaining a custom branch with your settings, you can configure it from your site's primary configuration file.
+### 覆盖主题配置
 
-Example configuration:
+通常情况下，Hexo 主题是一个独立的项目，并拥有一个独立的 `_config.yml` 配置文件。
+你可以在站点的 `_config.yml` 配置文件中配置你的主题，这样你就不需要 fork 一份主题并维护主题独立的配置文件。
 
-```yml
+以下是一个覆盖主题配置的例子：
+
+ ```yml
 # _config.yml
 theme_config:
   bio: "My awesome bio"
 ```
 
-```yml
+ ```yml
 # themes/my-theme/_config.yml
 bio: "Some generic bio"
 logo: "a-cool-image.png"
 ```
 
-Resulting in theme configuration:
+最终主题配置的输出是：
 
-```json
+ ```json
 {
   bio: "My awesome bio",
   logo: "a-cool-image.png"

@@ -1,10 +1,7 @@
 ---
-title: Themes
+title: 主题
 ---
-
-{% youtube 5ROIU_9dYe4 %}
-
-It's easy to build a Hexo theme - you just have to create a new folder. To start using your theme, modify the `theme` setting in your site's `_config.yml`. A theme should have the following structure:
+创建 Hexo 主题非常容易，您只要在 `themes` 文件夹内，新增一个任意名称的文件夹，并修改 `_config.yml` 内的 `theme` 设定，即可切换主题。一个主题可能会有以下的结构：
 
 ``` plain
 .
@@ -17,49 +14,48 @@ It's easy to build a Hexo theme - you just have to create a new folder. To start
 
 ### _config.yml
 
-Theme configuration file. Modifying this doesn't require a server restart.
+主题的配置文件。修改时会自动更新，无需重启服务器。
 
 ### languages
 
-Language folder. See [internationalization (i18n)](internationalization.html) for more info.
+语言文件夹。请参见 [国际化 (i18n)](internationalization.html)。
 
 ### layout
 
-Layout folder. This folder contains the theme's template files, which define the appearance of your website. Hexo provides the [Swig] template engine by default, but you can easily install additional plugins to support alternative engines such as [EJS], [Haml], [Jade], or [Pug]. Hexo chooses the template engine based on the file extension of the template. For example:
+布局文件夹。用于存放主题的模板文件，决定了网站内容的呈现方式，Hexo 内建 [Swig] 模板引擎，您可以另外安装插件来获得 [EJS]、[Haml] 或 [Jade] 支持，Hexo 根据模板文件的扩展名来决定所使用的模板引擎，例如：
 
 ``` plain
-layout.ejs   - uses EJS
-layout.swig  - uses Swig
+layout.ejs   - 使用 EJS
+layout.swig  - 使用 Swig
 ```
 
-See [templates](templates.html) for more info.
+您可参考 [模板](templates.html) 以获得更多信息。
 
 ### scripts
 
-Script folder. Hexo will automatically load all JavaScript files in this folder during initialization. For more info, see [plugins](plugins.html).
+脚本文件夹。在启动时，Hexo 会载入此文件夹内的 JavaScript 文件，请参见 [插件](plugins.html) 以获得更多信息。
 
 ### source
 
-Source folder. Place your assets (e.g. CSS and JavaScript files) here. Hexo ignores hidden files and files or folders prefixed with `_` (underscore).
+资源文件夹，除了模板以外的 Asset，例如 CSS、JavaScript 文件等，都应该放在这个文件夹中。文件或文件夹开头名称为 `_`（下划线线）或隐藏的文件会被忽略。
 
-Hexo will process and save all renderable files to the `public` folder. Non-renderable files will be copied to the `public` folder directly.
+如果文件可以被渲染的话，会经过解析然后储存到 `public` 文件夹，否则会直接拷贝到 `public` 文件夹。
 
-### Publishing
-
-When you have finished building your theme, you can publish it to the [theme list](/themes). Before doing so, you should run the [theme unit test](https://github.com/hexojs/hexo-theme-unit-test) to ensure that everything works. The steps for publishing a theme are very similar to those for [updating documentation](contributing.html#Updating_Documentation).
+### 发布
+当您完成主题后，可以考虑将它发布到 [主题列表](/themes)，让更多人能够使用您的主题。在发布前建议先进行 [主题单元测试](https://github.com/hexojs/hexo-theme-unit-test)，确保每一项功能都能正常使用。发布主题的步骤和 [更新文档](contributing.html#更新文档) 非常类似。
 
 1. Fork [hexojs/site]
-2. Clone the repository to your computer and install dependencies.
+2. 把库（repository）复制到电脑上，并安装所依赖的插件。
 
-    ```shell
+    {% code %}
     $ git clone https://github.com/<username>/site.git
     $ cd site
     $ npm install
-    ```
+    {% endcode %}
 
-3. Edit `source/_data/themes.yml` and add your theme. For example:
+3. 编辑 `source/_data/themes.yml`，在文件中新增您的主题，例如：
 
-    ```yaml
+    {% code %}
     - name: landscape
       description: A brand new default theme for Hexo.
       link: https://github.com/hexojs/hexo-theme-landscape
@@ -70,15 +66,14 @@ When you have finished building your theme, you can publish it to the [theme lis
         - widget
         - two_column
         - one_column
-    ```
+    {% endcode %}
 
-4. Add a screenshot (with the same name as the theme) to `source/themes/screenshots`. It must be a 800*500px PNG.
-5. Push the branch.
-6. Create a pull request and describe the change.
+4. 在 `source/themes/screenshots` 新增同名的截图档案，图片必须为 800x500 的 PNG 文件。
+5. 推送（push）分支。
+6. 建立一个新的合并申请（pull request）并描述改动。
 
 [EJS]: https://github.com/hexojs/hexo-renderer-ejs
 [Swig]: https://github.com/node-swig/swig-templates
 [Haml]: https://github.com/hexojs/hexo-renderer-haml
 [Jade]: https://github.com/hexojs/hexo-renderer-jade
-[Pug]: https://github.com/maxknee/hexo-render-pug
 [hexojs/site]: https://github.com/hexojs/site
