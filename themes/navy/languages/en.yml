@@ -1,6 +1,12 @@
 menu:
   docs: Docs
-  api: API
+  linux: Linux
+  mysql: MySQL
+  oracle: Oracle
+  python: Python
+  git: Git
+  tick: TICK
+  MySQL8.0: MySQL8.0
   news: News
   plugins: Plugins
   themes: Themes
@@ -53,23 +59,72 @@ sidebar:
     troubleshooting: Troubleshooting
     contributing: Contributing
   api:
-    core: Core
+    'overview': Overview
+    'additions': 'Additions'
+    'deprecations': 'Deprecations'
+    'removals': 'Removals'
+    'data dictionary': 'Data Dictionary'
+    'atomic ddl': 'Atomic DDL'
+    'mysql upgrade': 'MySQL Upgrade'
+    'security and account management': 'Security And Account Management'
+    'resource management': 'Resource Management'
+    'table encryption management': 'Table Encryption Management'
+    'innodb enhancements': 'Innodb Enhancements'
+    'character set support': 'Character Set Support'
+    'json enhancements': 'Json Enhancements'
+    'data type support': 'Data Type Support'
+    'optimizer': 'Optimizer'
+    'common table expressions': 'Common Table Expressions'
+    'window functions': 'Window Functions'
+    'lateral derived tables': 'Lateral Derived Tables'
+    'aliases in single table delete statements': 'Aliases In Single Table Delete Statements'
+    'regular expression support': 'Regular Expression Support'
+    'internal tempoary tables': 'Internal Tempoary Tables'
+    'backup lock': 'Backup Lock'
+    'replication': 'Replication'
+    'connection management': 'Connection Management'
+    'configuration': 'Configuration'
+    'plugins': 'Plugins'
+    'c api': 'C Api'
+    'additional target types for casts': 'Additional Target Types For Casts'
+    'json schema validation': 'Json Schema Validation'
+    'multi valued indexes': 'Multi Valued Indexes'
+    'hintable time zone': 'Hintable Time Zone'
+    'redo log archiving': 'Redo Log Archiving'
+    'the clone plugin': 'The Clone Plugin'
+    'hash join optimization': 'Hash Join Optimization'
+    'explain analyze statement': 'Explain Analyze Statement'
+    'query cast injection': 'Query Cast Injection'
+    'time zone support for timestamp and datatime': 'Time Zone Support For Timestamp And Datatime'
+    'precise information for json schema check constraint': 'Precise Information For Json Schema Check Constraint'
+    'row and columns aliases with on duplicate key update': 'Row And Columns Aliases With On Duplicate Key Update'
+    'sql standard explicit table clause and table value constructor': 'Sql Standard Explicit Table Clause And Table Value Constructor'
+    'optimizer hints for force index ignore index': 'Optimizer Hints For Force Index Ignore Index'
+    'json value function': 'Json Value Function'
+    'user comments and user attributes': 'User Comments And User Attributes'
+    'new optimizer switch flags': 'New Optimizer Switch Flags'
+    'xml enhancements': 'Xml Enhancements'
+
+  linux:
+    getting_started: Getting Started
     overview: Overview
-    events: Events
-    locals: Locals
-    router: Router
-    box: Box
-    rendering: Rendering
-    posts: Posts
-    scaffolds: Scaffolds
-    themes: Themes
-    extensions: Extensions
-    console: Console
-    deployer: Deployer
-    filter: Filter
-    generator: Generator
-    helper: Helper
-    migrator: Migrator
-    processor: Processor
-    renderer: Renderer
-    tag: Tag
+
+  mysql:
+    getting_started: Getting Started
+    overview: Overview
+
+  oracle:
+    getting_started: Getting Started
+    overview: Overview
+
+  python:
+    getting_started: Getting Started
+    overview: Overview
+
+  git:
+    getting_started: Getting Started
+    overview: Overview
+
+  tick:
+    getting_started: Getting Started
+    overview: Overview

@@ -30,23 +30,74 @@ docs:
     contributing: contributing.html
 
 api:
-  core:
+  additions:
     overview: index.html
-    events: events.html
-    locals: locals.html
-    router: router.html
-    box: box.html
-    rendering: rendering.html
-    posts: posts.html
-    scaffolds: scaffolds.html
-    themes: themes.html
-  extensions:
-    console: console.html
-    deployer: deployer.html
-    filter: filter.html
-    generator: generator.html
-    helper: helper.html
-    migrator: migrator.html
-    processor: processor.html
-    renderer: renderer.html
-    tag: tag.html
+    'additional target types for casts': additional-target-types-for-casts.html
+    'aliases in single table delete statements': aliases-in-single-table-delete-statements.html
+    'atomic ddl': atomic-ddl.html
+    'backup lock': backup-lock.html
+    'c api': c-api.html
+    'character set support': character-set-support.html
+    'common table expressions': common-table-expressions.html
+    'configuration': configuration.html
+    'connection management': connection-management.html
+    'data dictionary': data-dictionary.html
+    'data type support': data-type-support.html
+    'explain analyze statement': explain-analyze-statement.html
+    'hash join optimization': hash-join-optimization.html
+    'hintable time zone': hintable-time-zone.html
+    'innodb enhancements': innodb-enhancements.html
+    'internal tempoary tables': internal-tempoary-tables.html
+    'json enhancements': json-enhancements.html
+    'json schema validation': json-schema-validation.html
+    'json value function': json-value-function.html
+    'lateral derived tables': lateral-derived-tables.html
+    'multi valued indexes': multi-valued-indexes.html
+    'mysql upgrade': mysql-upgrade.html
+    'new optimizer switch flags': new-optimizer-switch-flags.html
+    'optimizer hints for force index ignore index': optimizer-hints-for-force-index-ignore-index.html
+    'optimizer': optimizer.html
+    'plugins': plugins.html
+    'precise information for json schema check constraint': precise-information-for-json-schema-check-constraint.html
+    'query cast injection': query-cast-injection.html
+    'redo log archiving': redo-log-archiving.html
+    'regular expression support': regular-expression-support.html
+    'replication': replication.html
+    'resource management': resource-management.html
+    'row and columns aliases with on duplicate key update': row-and-columns-aliases-with-on-duplicate-key-update.html
+    'security and account management': security-and-account-management.html
+    'sql standard explicit table clause and table value constructor': sql-standard-explicit-table-clause-and-table-value-constructor.html
+    'table encryption management': table-encryption-management.html
+    'the clone plugin': the-clone-plugin.html
+    'time zone support for timestamp and datatime': time-zone-support-for-timestamp-and-datatime.html
+    'user comments and user attributes': user-comments-and-user-attributes.html
+    'window functions': window-functions.html
+    'xml enhancements': xml-enhancements.html
+  deprecations:
+    'window functions': window-functions.html
+  removals:
+    'xml enhancements': xml-enhancements.html
+
+linux:
+  getting_started:
+    overview: index.html
+
+mysql:
+  getting_started:
+    overview: index.html
+
+oracle:
+  getting_started:
+    overview: index.html
+
+python:
+  getting_started:
+    overview: index.html
+
+git:
+  getting_started:
+    overview: index.html
+
+tick:
+  getting_started:
+    overview: index.html

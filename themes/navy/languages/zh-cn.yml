@@ -1,7 +1,13 @@
 menu:
   docs: 文档
-  api: API
-  news: 新闻
+  linux: Linux
+  mysql: MySQL
+  oracle: Oracle
+  python: Python
+  git: Git
+  tick: TICK
+  MySQL8.0: MySQL8.0
+  news: 日记
   plugins: 插件
   themes: 主题
   about: 关于
@@ -53,23 +59,73 @@ sidebar:
     troubleshooting: 问题解答
     contributing: 贡献
   api:
-    core: 核心
-    overview: 概述
-    events: 事件
-    locals: 本地变量
-    router: 路由
-    box: 盒(Box)
-    rendering: 渲染
-    posts: 文章
-    scaffolds: 模版 (Scaffold)
-    themes: 主题
-    extensions: 扩展
-    console: 控制台 (Console)
-    deployer: 部署器 (Deployer)
-    filter: 过滤器 (Filter)
-    generator: 生成器 (Generator)
-    helper: 辅助函数 (Helper)
-    migrator: 迁移器 (Migrator)
-    processor: 处理器 (Processor)
-    renderer: 渲染引擎 (Renderer)
-    tag: 标签 (Tag)
+    'overview': 概览
+    'additions': 添加的功能
+    'deprecations': 不推荐使用的功能
+    'removals': 删除的功能
+    'data dictionary': 数据字典
+    'atomic ddl': 原子数据定义语句
+    'mysql upgrade': 升级程序
+    'security and account management': 安全性和帐户管理
+    'resource management': 资源管理
+    'table encryption management': 表加密管理
+    'innodb enhancements': InnoDB增强功能
+    'character set support': 字符集支持
+    'json enhancements': Json增强功能
+    'data type support': 数据类型支持
+    'optimizer': 优化器
+    'common table expressions': 常用表表达式
+    'window functions': 窗口函数
+    'lateral derived tables': 横向派生表
+    'aliases in single table delete statements': 单表DELETE语句中的别名
+    'regular expression support': 正则表达式支持
+    'internal tempoary tables': 内部临时表
+    'backup lock': 备用锁
+    'replication': 复制
+    'connection management': 连接管理
+    'configuration': 配置
+    'plugins': 插件
+    'c api': C API
+    'additional target types for casts': 数据类型转换函数
+    'json schema validation': JSON模式验证
+    'multi valued indexes': 多值索引
+    'hintable time zone': 提示时区
+    'redo log archiving': 重做日志归档
+    'the clone plugin': 克隆插件
+    'hash join optimization': 哈希联接优化
+    'explain analyze statement': EXPLAIN ANALYZE语句
+    'query cast injection': 强制转换操作
+    'time zone support for timestamp and datatime': TIMESTAMP和DATETIME的时区支持
+    'precise information for json schema check constraint': 有关JSON模式CHECK约束失败的精确信息
+    'row and columns aliases with on duplicate key update': 行和列别名具有ON DUPLICATE KEY UPDATE
+    'sql standard explicit table clause and table value constructor': SQL标准的显式表子句和表值构造函数
+    'optimizer hints for force index ignore index': FORCE INDEX，IGNORE INDEX的优化程序提示
+    'json value function': JSON_VALUE函数
+    'user comments and user attributes': 用户注释和用户属性
+    'new optimizer switch flags': 新的optimizer_switch标志
+    'xml enhancements': XML增强功能
+
+
+  linux:
+    getting_started: 开始使用
+    overview: 概览
+
+  mysql:
+    getting_started: 开始使用
+    overview: 概览
+
+  oracle:
+    getting_started: 开始使用
+    overview: 概览
+
+  python:
+    getting_started: 开始使用
+    overview: 概览
+
+  git:
+    getting_started: 开始使用
+    overview: 概览
+
+  tick:
+    getting_started: 开始使用
+    overview: 概览

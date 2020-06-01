@@ -1,6 +1,12 @@
-docs: /docs/
-api: /api/
+#docs: /docs/
+linux: /linux/
+mysql: /mysql/
+oracle: /oracle/
+python: /python/
+git: /git/
+tick: /tick/
+MySQL8.0: /api/
 news: /news/
-plugins: /plugins/
-themes: /themes/
+#plugins: /plugins/
+#themes: /themes/
 about: /about/
