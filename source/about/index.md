@@ -26,3 +26,11 @@ title: About
 {% note info 联系我%}
 rgweiyaping@hotmail.com
 {% endnote %}
+
+## Recommend
+ 
+<p><a href="https://www.changhai.org/" class="carbon-text" target="_blank" rel="noopener sponsored">科普作家卢昌海</a></p>
+<p><a href="http://www.vldb.org/" class="carbon-text" target="_blank" rel="noopener sponsored">VLDB</a></p>
+<p><a href="https://sigmod.org/" class="carbon-text" target="_blank" rel="noopener sponsored">SIGMOD</a></p>
+<p><a href="https://www.usenix.org/" class="carbon-text" target="_blank" rel="noopener sponsored">USENIX</a></p>
+
