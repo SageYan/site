@@ -1,5 +1,5 @@
 ---
-title: MySQL 8.0的新增功能探索-数据类型转换函数
+title: CAST() 和 CONVERT()新增目标类型
 date: 2020-05-26T17:58:00.000Z
 categories:
 - [培训教程,MySQL高级管理教程]

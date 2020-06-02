@@ -45,7 +45,7 @@ sidebar:
     'common table expressions': 常用表表达式
     'window functions': 窗口函数
     'lateral derived tables': 横向派生表
-    'aliases in single table delete statements': 单表DELETE语句中的别名
+    'aliases in single table delete statements': Single-Table DELETE
     'regular expression support': 正则表达式支持
     'internal tempoary tables': 内部临时表
     'backup lock': 备用锁
@@ -54,7 +54,7 @@ sidebar:
     'configuration': 配置
     'plugins': 插件
     'c api': C API
-    'additional target types for casts': 数据类型转换函数
+    'additional target types for casts': CAST() 和 CONVERT()
     'json schema validation': JSON模式验证
     'multi valued indexes': 多值索引
     'hintable time zone': 提示时区
