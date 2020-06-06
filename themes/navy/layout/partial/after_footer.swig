@@ -17,6 +17,18 @@
 {% endif %}
 <!-- Algolia -->
 {% if config.algolia[page.lang] %}
+<!-- at the end of the BODY -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript">
+document.getElementById('search-input-wrap').classList.add('on');
+docsearch({
+    apiKey: '{{ config.algolia[page.lang].api_key }}',
+    indexName: '{{ config.algolia[page.lang].index_name }}',
+    inputSelector: '#search-input'
+});
+</script>
+
+<!--   backup
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
 <script type="text/javascript">
 document.getElementById('search-input-wrap').classList.add('on');
@@ -26,6 +38,8 @@ docsearch({
   inputSelector: '#search-input'
 });
 </script>
+-->
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
@@ -36,4 +50,5 @@ docsearch({
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
 <!-- Bootstrap JS -->
+
 {% endif %}

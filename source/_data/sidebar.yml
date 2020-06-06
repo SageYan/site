@@ -70,3 +70,15 @@ git:
 tick:
   getting_started:
     overview: index.html
+
+mse:
+  getting_started:
+    overview: index.html
+  computer:
+    overview: /mse/computer/index.html
+  c++:
+    overview: /mse/c++/index.html
+  algorithm:
+    overview: /mse/algorithm/index.html
+  software:
+    overview: /mse/software/index.html

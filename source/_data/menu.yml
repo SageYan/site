@@ -6,7 +6,8 @@ oracle: /oracle/
 python: /python/
 git: /git/
 tick: /tick/
-news: /news/
+mse: /mse/
 #plugins: /plugins/
 #themes: /themes/
+news: /news/
 about: /about/

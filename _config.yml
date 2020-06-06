@@ -27,12 +27,9 @@ disqus_shortname: toberoot
 google_analytics: UA-48498357-3
 fb_admins: 100000247608790
 algolia:
-#  en:
-#    api_key: c3d5d4c995b5e0c2ffb5623900279a66
-#    index_name: hexo
   zh-cn:
-    api_key: cdea7d4e47d84f6145b77e7f68689f35
-    index_name: hexo_zh-cn
+    api_key: ad652bf20bcd81434ad119c8cf34722e
+    index_name: toberoot
 github: BoobooWei
 
 #deploy:

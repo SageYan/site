@@ -6,11 +6,12 @@ menu:
   git: Git
   tick: TICK
   MySQL8.0: MySQL8.0
-  news: 日记
+  news: News
   plugins: 插件
   themes: 主题
-  about: 关于
+  about: About
   search: 搜索
+  mse: MSE
 
 index:
   get_started: 开始使用
@@ -97,3 +98,11 @@ sidebar:
   tick:
     getting_started: 开始使用
     overview: 概览
+
+  mse:
+    getting_started: 开始使用
+    overview: 概览
+    computer: 计算机系统
+    c++: C++
+    algorithm: 数据结构与算法
+    software: 软件工程

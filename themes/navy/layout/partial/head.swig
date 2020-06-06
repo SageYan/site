@@ -50,5 +50,6 @@
           enable_page_level_ads: true
      });
   </script>
-
+  <!-- at the end of the HEAD -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 </head>
