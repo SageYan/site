@@ -2,8 +2,17 @@
 <div id="content-wrap">
   <div class="wrapper">
     <div class="inner">
+
+
+    <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+
+        <header class="article-header">
+             <h1 class="article-title" itemprop="name">News</h1>
+             </header>
+    </article>
+
       {% for post in page.posts %}
-        {% if loop.index == 1 %}
+        {% if loop.index == 0 %}
           {{ partial('partial/post', {post: post}) }}
         {% else %}
           <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">

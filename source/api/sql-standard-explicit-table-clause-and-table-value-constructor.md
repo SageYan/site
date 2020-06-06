@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-SQL标准的显式表子句和表值构造函数
 date: 2020-05-26T17:58:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 - **SQL标准的显式表子句和表值构造函数。** 根据SQL标准添加了表值构造函数和显式表子句。这些分别在MySQL 8.0.19中作为 [`TABLE`](https://dev.mysql.com/doc/refman/8.0/en/table.html)语句和 [`VALUES`](https://dev.mysql.com/doc/refman/8.0/en/values.html)语句实现。

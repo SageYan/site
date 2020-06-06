@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-行和列别名具有ON DUPLICATE KEY UPDATE
 date: 2020-05-26T17:58:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 - **行和列别名具有ON DUPLICATE KEY UPDATE。** 从MySQL 8.0.19开始，可以使用别名引用要插入的行，以及（可选）引用其列。考虑在具有列 和[`INSERT`](https://dev.mysql.com/doc/refman/8.0/en/insert.html)的表`t`上的以下 语句 ： `a``b`

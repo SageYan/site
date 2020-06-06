@@ -2,11 +2,9 @@
 title: 单表DELETE语句支持表别名
 date: 2020-06-02T09:20:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 ## 功能描述

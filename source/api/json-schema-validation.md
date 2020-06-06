@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-JSON模式验证
 date: 2020-05-26T17:58:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 - **JSON模式验证。** MySQL 8.0.17添加了两个功能 [`JSON_SCHEMA_VALID()`](https://dev.mysql.com/doc/refman/8.0/en/json-validation-functions.html#function_json-schema-valid)， [`JSON_SCHEMA_VALIDATION_REPORT()`](https://dev.mysql.com/doc/refman/8.0/en/json-validation-functions.html#function_json-schema-validation-report) 用于再次验证JSON文档JSON模式。 `JSON_SCHEMA_VALID()`如果文档根据架构进行验证，则返回TRUE（1），否则通过FALSE（0）返回。 `JSON_SCHEMA_VALIDATION_REPORT()`返回一个JSON文档，其中包含有关验证结果的详细信息。以下语句适用于这两个功能：- 模式必须符合JSON模式规范的草案4。

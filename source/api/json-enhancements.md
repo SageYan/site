@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-Json增强功能
 date: 2020-05-26T17:58:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 - **JSON增强。** 对MySQL的JSON功能进行了以下增强或添加：- 添加了 [`->>`](https://dev.mysql.com/doc/refman/8.0/en/json-search-functions.html#operator_json-inline-path) （内联路径）运算符，等效于调用 [`JSON_UNQUOTE()`](https://dev.mysql.com/doc/refman/8.0/en/json-modification-functions.html#function_json-unquote)的结果[`JSON_EXTRACT()`](https://dev.mysql.com/doc/refman/8.0/en/json-search-functions.html#function_json-extract)。

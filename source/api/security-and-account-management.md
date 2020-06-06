@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-安全性和帐户管理
 date: 2020-05-26T17:56:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 - **安全性和帐户管理。** 添加了这些增强功能，以提高安全性并在帐户管理中提供更大的DBA灵活性：- `mysql`现在 ，系统数据库中的授权表是`InnoDB` （事务性）表。以前，这些是 `MyISAM`（非事务性）表。授予表存储引擎的更改是帐户管理对帐单行为的伴随更改的基础。以前，帐户管理对帐单（例如 [`CREATE USER`](https://dev.mysql.com/doc/refman/8.0/en/create-user.html)或 [`DROP USER`](https://dev.mysql.com/doc/refman/8.0/en/drop-user.html)），命名多个用户可以对某些用户成功，而对其他用户则失败。现在，每个语句都是事务性的，并且对于所有指定的用户都成功，或者回滚，如果发生任何错误，则无效。如果成功，则将语句写入二进制日志；如果失败，则不写入语句。在这种情况下，将发生回滚并且不进行任何更改。有关更多信息，请参见[第13.1.1节"原子数据定义语句支持"](https://dev.mysql.com/doc/refman/8.0/en/atomic-ddl.html)。

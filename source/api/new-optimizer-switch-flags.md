@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-新的optimizer_switch标志
 date: 2020-05-26T17:58:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 - **新的optimizer_switch标志。** MySQL 8.0.21为[`optimizer_switch`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_optimizer_switch)系统变量添加了两个新标志， 如下表所示：

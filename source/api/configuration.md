@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-配置
 date: 2020-05-26T17:58:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 - **组态。** 在整个MySQL中，主机名的最大允许长度已从以前的60个字符增加到255个ASCII字符。例如，这适用于数据字典中与主机名相关的列， `mysql`系统架构，性能架构`INFORMATION_SCHEMA`和 `sys`；陈述的 `MASTER_HOST`价值 [`CHANGE MASTER TO`](https://dev.mysql.com/doc/refman/8.0/en/change-master-to.html)；语句输出中的`Host`列 [`SHOW PROCESSLIST`](https://dev.mysql.com/doc/refman/8.0/en/show-processlist.html)；帐户名称中的主机名（例如帐户管理对帐单和 `DEFINER`属性）；以及与主机名相关的命令选项和系统变量。注意事项：

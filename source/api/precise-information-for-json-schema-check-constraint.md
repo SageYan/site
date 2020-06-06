@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-有关JSON模式CHECK约束失败的精确信息
 date: 2020-05-26T17:58:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 - **有关JSON模式CHECK约束失败的精确信息。** 当 [`JSON_SCHEMA_VALID()`](https://dev.mysql.com/doc/refman/8.0/en/json-validation-functions.html#function_json-schema-valid)用于指定`CHECK`约束时，MySQL 8.0.19及更高版本提供有关此类约束失败原因的准确信息。

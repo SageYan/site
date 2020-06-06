@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索
 date: 2020-05-26T17:59:00.000Z
 categories:
-- [培训教程, MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 自从2005年Oracle收购InnoDB存储引擎开发商Innobase伊始，MySQL的命运已然注定。

@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-多值索引
 date: 2020-05-26T17:58:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 **多值索引。** 从MySQL 8.0.17开始， [`InnoDB`](https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html)支持创建多值索引，该索引是在[`JSON`](https://dev.mysql.com/doc/refman/8.0/en/json.html)存储值数组的列上定义的辅助索引，并且单个数据记录可以具有多个索引记录。这样的索引使用诸如的关键部分定义 `CAST(data->'$.zipcode' AS UNSIGNED ARRAY)`。MySQL优化程序会自动使用多值索引进行合适的查询，如的输出所示 [`EXPLAIN`](https://dev.mysql.com/doc/refman/8.0/en/explain.html)。

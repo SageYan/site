@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-TIMESTAMP和DATETIME的时区支持
 date: 2020-05-26T17:58:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 - **TIMESTAMP和DATETIME的时区支持。** 从MySQL 8.0.19开始，服务器接受带有插入的datetime（[`TIMESTAMP`](https://dev.mysql.com/doc/refman/8.0/en/datetime.html)和 [`DATETIME`](https://dev.mysql.com/doc/refman/8.0/en/datetime.html)）值的时区偏移量。该偏移量使用与设置[`time_zone`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_time_zone)系统变量时使用的格式相同的格式，不同之处在于，当偏移量的小时部分小于10且`'-00:00'`不允许时，前导零是必需的 。日期时间文字，其中包括时区偏移的例子是 `'2019-12-11 10:40:30-05:00'`， `'2003-04-14 03:30:00+10:00'`和 `'2020-01-01 15:35:45+05:30'`。

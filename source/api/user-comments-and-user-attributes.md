@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-用户注释和用户属性
 date: 2020-05-26T17:58:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 - **用户评论和用户属性。** MySQL 8.0.21引入了在创建或更新用户帐户时设置用户注释和用户属性的功能。用户注释包括作为参数传递`COMMENT`给与[`CREATE USER`](https://dev.mysql.com/doc/refman/8.0/en/create-user.html)or [`ALTER USER`](https://dev.mysql.com/doc/refman/8.0/en/alter-user.html)语句一起使用的子句的任意文本。用户属性由JSON对象形式的数据组成，该数据作为参数传递给与`ATTRIBUTE`这两个语句之一一起使用的 子句。该属性可以包含JSON对象表示法中的任何有效键值对。仅一个 `COMMENT`或`ATTRIBUTE` 可以在单一使用`CREATE USER`或 `ALTER USER` 声明。

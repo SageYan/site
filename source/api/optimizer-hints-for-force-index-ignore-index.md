@@ -2,11 +2,9 @@
 title: MySQL 8.0的新增功能探索-FORCE INDEX，IGNORE INDEX的优化程序提示
 date: 2020-05-26T17:58:00.000Z
 categories:
-- [培训教程,MySQL高级管理教程]
+- [MySQL8.0]
 tags:
-- 培训
-- MySQL高级管理教程-探索类
-- MySQL8
+- MySQL新特性
 ---
 
 - **FORCE INDEX，IGNORE INDEX的优化程序提示。** MySQL 8.0引入了索引级优化器提示，这些提示与[第8.9.4节"索引提示"中](https://dev.mysql.com/doc/refman/8.0/en/index-hints.html)所述的传统索引提示类似。新的提示这里列出，与他们一起`FORCE INDEX`或`IGNORE INDEX` 等价物：
