@@ -80,6 +80,9 @@ mse:
     introduction_to_instruction_set: /mse/computer/introduction_to_instruction_set.html
   c++:
     overview: /mse/c++/index.html
+    introduction: /mse/c++/introduction.html
+    set_enviroment: /mse/c++/set_enviroment.html
+    basic_grammar: /mse/c++/basic_grammar.html
   algorithm:
     overview: /mse/algorithm/index.html
   software:

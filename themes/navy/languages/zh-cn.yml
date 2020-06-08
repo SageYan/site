@@ -104,6 +104,9 @@ sidebar:
     overview: 概览
     computer: 计算机系统
     c++: C++
+    introduction: C++ 简介
+    set_enviroment: 环境配置
+    basic_grammar: 基础语法
     algorithm: 数据结构与算法
     software: 软件工程
     computer_performance_evaluation: 计算机系统概述
