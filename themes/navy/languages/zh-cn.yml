@@ -33,7 +33,7 @@ sidebar:
     'deprecations': 不推荐使用的功能
     'removals': 删除的功能
     'data dictionary': 数据字典
-    'atomic ddl': 原子数据定义语句
+    'atomic ddl': Atomic DDL
     'mysql upgrade': 升级程序
     'security and account management': 安全性和帐户管理
     'resource management': 资源管理
