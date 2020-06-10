@@ -49,7 +49,7 @@ sidebar:
     'aliases in single table delete statements': Single-Table DELETE
     'regular expression support': 正则表达式支持
     'internal tempoary tables': 内部临时表
-    'backup lock': 备用锁
+    'backup lock': Backup Lock
     'replication': 复制
     'connection management': 连接管理
     'configuration': 配置
