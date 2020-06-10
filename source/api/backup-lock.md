@@ -1,6 +1,6 @@
 ---
 title: Backup Lock
-date: 2020-05-26T17:58:00.000Z
+date: 2020-06-10T17:58:00.000Z
 categories:
 - [MySQL8.0]
 tags:
@@ -15,6 +15,9 @@ A new type of backup lock permits DML during an online backup while preventing o
 通过 Backup Lock 的机制，支持在线备份期间执行DML，防止可能导致快照不一致的操作。
 
 [`LOCK INSTANCE FOR BACKUP`](https://dev.mysql.com/doc/refman/8.0/en/lock-instance-for-backup.html) 和 [`UNLOCK INSTANCE`](https://dev.mysql.com/doc/refman/8.0/en/lock-instance-for-backup.html)语法支持新的备份锁 。需要授予用户 [`BACKUP_ADMIN`](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_backup-admin)权限。
+
+{% endnote %}
+
 
 ## 功能学习
 
