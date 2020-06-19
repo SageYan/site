@@ -7,7 +7,9 @@ python: /python/
 git: /git/
 tick: /tick/
 mse: /mse/
+aliyun: /aliyun/
 #plugins: /plugins/
 #themes: /themes/
 news: /news/
-about: /about/
+#about: /about/
+

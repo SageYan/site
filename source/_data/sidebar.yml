@@ -73,7 +73,7 @@ tick:
 
 mse:
   getting_started:
-    overview: index.html
+    overview: /mse/index.html
   computer:
     overview: /mse/computer/index.html
     computer_performance_evaluation: /mse/computer/computer_performance_evaluation.html
@@ -83,7 +83,18 @@ mse:
     introduction: /mse/c++/introduction.html
     set_enviroment: /mse/c++/set_enviroment.html
     basic_grammar: /mse/c++/basic_grammar.html
+    variables_and_basic_types: /mse/c++/variables_and_basic_types.html
   algorithm:
     overview: /mse/algorithm/index.html
   software:
     overview: /mse/software/index.html
+
+aliyun:
+  getting_started:
+    overview: /aliyun/index.html
+    bigdata: /aliyun/bigdata/index.html
+  QBI:
+    overview: /aliyun/bigdata/qbi/index.html
+    a00_introduce: /aliyun/bigdata/qbi/a00_introduce.html
+    a01_qbi_product: /aliyun/bigdata/qbi/a01_qbi_product.html
+    a02_quickstart: /aliyun/bigdata/qbi/a02_quickstart.html

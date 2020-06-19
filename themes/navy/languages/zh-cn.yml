@@ -12,6 +12,7 @@ menu:
   about: About
   search: 搜索
   mse: MSE
+  aliyun: AliYun
 
 index:
   get_started: 开始使用
@@ -107,7 +108,19 @@ sidebar:
     introduction: C++ 简介
     set_enviroment: 环境配置
     basic_grammar: 基础语法
+    variables_and_basic_types: 变量和基本类型
     algorithm: 数据结构与算法
     software: 软件工程
     computer_performance_evaluation: 计算机系统概述
     introduction_to_instruction_set: 计算机语言
+
+
+  aliyun:
+    getting_started: 开始使用
+    overview: 概览
+    bigdata: 大数据概览
+    QBI: Quick BI
+    a00_introduce: 课程简介
+    a01_qbi_product: QBI产品
+    a02_quickstart: QBI入门
+

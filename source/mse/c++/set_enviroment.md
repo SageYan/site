@@ -4,7 +4,10 @@ title: 环境设置
 
 ## 本地环境设置
 
-> 我的环境为Mac
+> 我的环境为Mac，最终选择了 Visual Studio
+
+[在Visual Studio中使用C ++进行Linux开发](https://devblogs.microsoft.com/cppblog/linux-development-with-c-in-visual-studio/)
+
 
 如果您想要设置 C++ 语言环境，您需要确保电脑上有以下两款可用的软件，文本编辑器和 C++ 编译器。
 

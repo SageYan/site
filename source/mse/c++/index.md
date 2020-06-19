@@ -10,7 +10,11 @@ C++ 是一种中级语言，它是由 Bjarne Stroustrup 于 1979 年在贝尔实
 因此学习C++迫在眉睫。
 {% endnote %}
 
+
 * [C++ 菜鸟教程](https://www.runoob.com/cplusplus/cpp-tutorial.html)
+* [C++ Primer 第五版 （英文）](http://bestcbooks.com/cpp-primer-5th/)
+* [C++ 资源大全中文版](https://github.com/jobbole/awesome-cpp-cn)
+* [C++必读书籍推荐](http://bestcbooks.com/recommended-cpp-books/)
 * [MySQL 8.0 源码仓库](https://github.com/mysql/mysql-server/tree/8.0)
 * [MySQL 8.0 源码文档](https://dev.mysql.com/doc/dev/mysql-server/latest/)
 
