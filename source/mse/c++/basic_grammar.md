@@ -214,3 +214,27 @@ cout << "Hello World"; // 输出 Hello World
 
 
 
+# 课堂作业
+
+```c++ 
+#include <iostream>
+#include <cstdio>
+
+
+using namespace std;
+
+int main()
+{
+    cout << "Hero Name:BoobooWei\n";
+
+    cout << "Hurt:56\t\t Range:600\n"
+         << "Armor:15.5(+3.4)\t Magic resistance:30(+0.0)\n"
+         << "Hit points:395(+79)\t Life recovery:0.9(+0.11)\n";
+    return 0;
+}
+```
+
+运行结果
+
+![](pic/02.png)
+![](pic/03.png)

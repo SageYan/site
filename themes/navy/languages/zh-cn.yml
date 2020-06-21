@@ -108,7 +108,7 @@ sidebar:
     introduction: C++ 简介
     set_enviroment: 环境配置
     basic_grammar: 基础语法
-    variables_and_basic_types: 变量和基本类型
+    variables_and_basic_types: 初识变量
     algorithm: 数据结构与算法
     software: 软件工程
     computer_performance_evaluation: 计算机系统概述

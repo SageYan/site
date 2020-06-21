@@ -2,33 +2,23 @@
 title: 环境设置
 ---
 
+
+{% note info C++开发工具%}
+记事本 Notepad++
+VS 2019
+code::Blocks 如日中天的开源免费C/C++，专业开发人员推荐重用
+其他工具: DEV C++\CLine\C-Free\Xcode\C4droid
+{% endnote %}
+
+
 ## 本地环境设置
 
 > 我的环境为Mac，最终选择了 Visual Studio
 
 [在Visual Studio中使用C ++进行Linux开发](https://devblogs.microsoft.com/cppblog/linux-development-with-c-in-visual-studio/)
-
+[Code :: Blocks是免费的C，C ++和Fortran IDE](http://www.codeblocks.org/)
 
 如果您想要设置 C++ 语言环境，您需要确保电脑上有以下两款可用的软件，文本编辑器和 C++ 编译器。
-
-### 文本编辑器
-
-{% note info CLion%}
-[Jetbrains官网](https://www.jetbrains.com/)
-CLion是Jetbrains公司旗下新推出的一款专为开发C/C++所设计的跨平台IDE，它是以IntelliJ为基础设计的，同时还包含了许多智能功能来提高开发人员的生产力。
-{% endnote %}
-
-这将用于输入您的程序。文本编辑器包括 Windows Notepad、OS Edit command、Brief、Epsilon、EMACS 和 vim/vi。
-
-文本编辑器的名称和版本在不同的操作系统上可能会有所不同。例如，Notepad 通常用于 Windows 操作系统上，vim/vi 可用于 Windows 和 Linux/UNIX 操作系统上。
-
-通过编辑器创建的文件通常称为源文件，源文件包含程序源代码。C++ 程序的源文件通常使用扩展名 `.cpp`、`.cp` 或 `.c`。
-
-在开始编程之前，请确保您有一个文本编辑器，且有足够的经验来编写一个计算机程序，然后把它保存在一个文件中，编译并执行它。
-
-![](pic/01.png)
-
-![](pic/02.jpg)
 
 ### C++ 编译器
 
