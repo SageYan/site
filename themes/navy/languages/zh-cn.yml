@@ -123,4 +123,6 @@ sidebar:
     a00_introduce: 课程简介
     a01_qbi_product: QBI产品
     a02_quickstart: QBI入门
-
+    a03_quickdashboard: QBI可视化
+    RDS: RDS
+    rds_introduce: RDS配置

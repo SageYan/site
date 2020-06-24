@@ -98,3 +98,6 @@ aliyun:
     a00_introduce: /aliyun/bigdata/qbi/a00_introduce.html
     a01_qbi_product: /aliyun/bigdata/qbi/a01_qbi_product.html
     a02_quickstart: /aliyun/bigdata/qbi/a02_quickstart.html
+    a03_quickdashboard: /aliyun/bigdata/qbi/a03_quickdashboard.html
+  RDS:
+    rds_introduce: /aliyun/rds/rds_introduce.html
