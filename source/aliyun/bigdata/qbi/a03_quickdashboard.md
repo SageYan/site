@@ -120,6 +120,6 @@ title: Quick BI仪表版
 
 
 {% note warn OLAP多维快速计算分析分享%}
-![](pic/13.png)
-![](pic/14.png)
 {% endnote %}
+
+![](pic/13.png)
