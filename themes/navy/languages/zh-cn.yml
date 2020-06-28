@@ -109,6 +109,7 @@ sidebar:
     set_enviroment: 环境配置
     basic_grammar: 基础语法
     variables_and_basic_types: 初识变量
+    flow_control_statement: 流程控制
     algorithm: 数据结构与算法
     software: 软件工程
     computer_performance_evaluation: 计算机系统概述

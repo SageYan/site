@@ -84,6 +84,7 @@ mse:
     set_enviroment: /mse/c++/set_enviroment.html
     basic_grammar: /mse/c++/basic_grammar.html
     variables_and_basic_types: /mse/c++/variables_and_basic_types.html
+    flow_control_statement: /mse/c++/flow_control_statement.html
   algorithm:
     overview: /mse/algorithm/index.html
   software:
