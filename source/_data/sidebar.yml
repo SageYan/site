@@ -85,6 +85,8 @@ mse:
     basic_grammar: /mse/c++/basic_grammar.html
     variables_and_basic_types: /mse/c++/variables_and_basic_types.html
     flow_control_statement: /mse/c++/flow_control_statement.html
+    array: /mse/c++/array.html
+    pointer_peference: /mse/c++/pointer_peference.html
   algorithm:
     overview: /mse/algorithm/index.html
   software:
