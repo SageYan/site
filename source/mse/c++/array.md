@@ -1,8 +1,27 @@
 ---
-出识数组
+title: 初识数组
 ---
 
 # 数组基础
+
+{% note warn 个人理解%}
+
+C++中的数组 与 Python的列表List对比
+
+| 对比                       | C++ Array                                                    | Python List                                                  |
+| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 声明一维数组               | type arrayName [ arraySize ];                                | 不需要                                                       |
+| 初始化                     | int balance[2] = {1000, 2};                                  | balance = [1, 'a']                                           |
+| 存储的数据类型             | 必须相同                                                     | 可以不同                                                     |
+| 获取长度                   | int num_ach = sizeof(balance) / sizeof(int);                 | num_ach = len(balance)                                       |
+| 获取指定位置的数据         | balance[index]                                               | balance[index]                                               |
+| 循环打印数组中每个元素的值 | for ( int j = 0; j < num_ach; j++ )<br/>   {<br/>      cout <<  n[ j ] << endl;<br/>   } | for i in num_ach:<br/>    print(i)<br/>for b in balance:<br/>    print(b) |
+| 获取最大最小值             | 需要自定义算法比较                                           | 内置方法 max() min() <br/>此时要求列表中的元素为同一类型。   |
+| 删除                       | 1. 找到要删除的元素下标记 <br/>2. 从找到的下标开始，将后面的元素依次赋值给前一位 | del balance[1]                                               |
+| 插入                       | balance[num_ach+1] = 10                                      | balance.append(10)                                           |
+| 声明多维数组               | type name[size1][size2]...[sizeN];                           | balance = [ [1,'tom'], [2. 'jack']]                          |
+
+{% endnote %}
 
 C++ 支持**数组**数据结构，它可以存储一个固定大小的相同类型元素的顺序集合。数组是用来存储一系列数据，但它往往被认为是一系列相同类型的变量。
 
@@ -108,7 +127,45 @@ Element        Value
       9          109
 ```
 
-# 数组详解
+# 数组操作
+
+## 排序算法
+
+此处不展开讲解，具体参考《数据结构与算法分析C++》
+
+使用C++，对于最一般的内部排序应用，选用的方法不是插入排序、谢尔排序，就是快速排序，它们的选用主要是根据输入的大小来决定的。
+
+不同的算法排序的比较（所有时间均以秒计）
+
+| N     | 插入排序<br/>O(N^2) | 谢尔排序<br/>O(N^7/6) | 堆排序<br/>O(NlogN) | 快速排序<br/>O(NlogN) |
+| ----- | ------------------- | --------------------- | ------------------- | --------------------- |
+| 10    | 0.000001            | 0.000002              | 0.000003            | 0.000002              |
+| 100   | 0.000106            | 0.000039              | 0.000052            | 0.000023              |
+| 1000  | 0.011240            | 0.000678              | 0.000750            | 0.000316              |
+| 1万   | 1.047               | 0.009782              | 0.010215            | 0.004129              |
+| 10万  | 110.492             | 0.13438               | 0.139542            | 0.052790              |
+| 100万 | NA                  | 1.6777                | 1.7967              | 0.6154                |
+
+高度优化的快速排序算法即使对于很少的输入也能像谢尔排序一样快。
+
+快速排序的改进算法仍然有O(N^2)最坏情况，但是机会是微不足道的。
+
+如果不想过多的考虑输入是随机的大小，那么谢尔排序是不错的选择。
+
+一般大家脑子里的只有“替换选择”算法哈——打擂台法
+
+## 删除插入
+
+删除：
+
+1. 找到要删除的元素下标记
+2. 从找到的下标开始，将后面的元素依次赋值给前一位
+
+插入：
+
+1. 将新值放在数组的末尾，重新排序
+
+# 二维数组
 
 在 C++ 中，数组是非常重要的，我们需要了解更多有关数组的细节。下面列出了 C++ 程序员必须清楚的一些与数组相关的重要概念：
 
@@ -119,9 +176,103 @@ Element        Value
 | [传递数组给函数](https://www.runoob.com/cplusplus/cpp-passing-arrays-to-functions.html) | 您可以通过指定不带索引的数组名称来给函数传递一个指向数组的指针。 |
 | [从函数返回数组](https://www.runoob.com/cplusplus/cpp-return-arrays-from-function.html) | C++ 允许从函数返回数组。                                     |
 
+
+
+C++ 支持多维数组。多维数组声明的一般形式如下：
+
+```c++
+type name[size1][size2]...[sizeN];
+```
+
+例如，下面的声明创建了一个三维 5 . 10 . 4 整型数组：
+
+```c++
+int threedim[5][10][4];
+```
+
+多维数组最简单的形式是二维数组。一个二维数组，在本质上，是一个一维数组的列表。声明一个 x 行 y 列的二维整型数组，形式如下：
+
+```
+type arrayName [ x ][ y ];
+```
+
+其中，**type** 可以是任意有效的 C++ 数据类型，**arrayName** 是一个有效的 C++ 标识符。
+
+一个二维数组可以被认为是一个带有 x 行和 y 列的表格。下面是一个二维数组，包含 3 行和 4 列：
+
+![C++ 中的二维数组](https://www.runoob.com/wp-content/uploads/2014/09/two_dimensional_arrays.jpg)
+
+因此，数组中的每个元素是使用形式为 a[ i , j ] 的元素名称来标识的，其中 a 是数组名称，i 和 j 是唯一标识 a 中每个元素的下标。
+
+## 初始化
+
+多维数组可以通过在括号内为每行指定值来进行初始化。下面是一个带有 3 行 4 列的数组。
+
+```
+int a[3][4] = {  
+ {0, 1, 2, 3} ,   /*  初始化索引号为 0 的行 */
+ {4, 5, 6, 7} ,   /*  初始化索引号为 1 的行 */
+ {8, 9, 10, 11}   /*  初始化索引号为 2 的行 */
+};
+```
+
+内部嵌套的括号是可选的，下面的初始化与上面是等同的：
+
+```
+int a[3][4] = {0,1,2,3,4,5,6,7,8,9,10,11};
+```
+
+## 访问元素
+
+二维数组中的元素是通过使用下标（即数组的行索引和列索引）来访问的。例如：
+
+```
+int val = a[2][3];
+```
+
+上面的语句将获取数组中第 3 行第 4 个元素。您可以通过上面的示意图来进行验证。让我们来看看下面的程序，我们将使用嵌套循环来处理二维数组：
+
+```
+#include <iostream>
+using namespace std;
+ 
+int main ()
+{
+   // 一个带有 5 行 2 列的数组
+   int a[5][2] = { {0,0}, {1,2}, {2,4}, {3,6},{4,8}};
+ 
+   // 输出数组中每个元素的值                      
+   for ( int i = 0; i < 5; i++ )
+      for ( int j = 0; j < 2; j++ )
+      {
+         cout << "a[" << i << "][" << j << "]: ";
+         cout << a[i][j]<< endl;
+      }
+ 
+   return 0;
+}
+```
+
+当上面的代码被编译和执行时，它会产生下列结果：
+
+```
+a[0][0]: 0
+a[0][1]: 0
+a[1][0]: 1
+a[1][1]: 2
+a[2][0]: 2
+a[2][1]: 4
+a[3][0]: 3
+a[3][1]: 6
+a[4][0]: 4
+a[4][1]: 8
+```
+
+如上所述，您可以创建任意维度的数组，但是一般情况下，我们创建的数组是一维数组和二维数组。
+
 # 课堂练习
 
-## 一维数组
+## 数组基本操作
 
 * 使用一维数组存放学生单门学科的成绩
 * 求最好成绩和最差成绩
@@ -225,4 +376,106 @@ MIN           10
 2
 查找[2]           10
 ```
+
+## 元素删除与插入
+
+要求：根据要求操作排行榜战斗力值
+
+1. 战力值从大到小排序
+2. 删除山兜里42322
+3. 插入战斗力41000并保持降序
+
+```c++
+
+```
+
+运行结果：
+
+```bash
+
+```
+
+## 二维数组
+
+要求：
+
+1. 记录学生的多门学科成绩
+
+```c++
+#include <iostream>
+using namespace std;
+
+#include <iomanip>
+using std::setw;
+
+int main()
+{
+    // 使用二维数组存放学生多门学科的成绩
+    string stu_names[]{"superman", "batman", "wonderwoman", "booboo"};
+    string cource_names[]{"english", "math", "yuwen"};
+    const int ROW = sizeof(stu_names) / sizeof(stu_names[0]);
+    const int COL = sizeof(cource_names) / sizeof(cource_names[0]);
+    cout << ROW << '\t' << COL << endl;
+
+    double scores[ROW][COL];
+    // 录入数据
+    for (int i = 0; i < ROW; i++)
+    {
+        for (int j = 0; j < COL; j++)
+        {
+            cout << stu_names[i] << "'s" << cource_names[j] << " score: ";
+            cin >> scores[i][j];
+        }
+    }
+    //  打印数据
+    cout << '\t';
+    for (int i = 0; i < COL; i++)
+    {
+        cout << cource_names[i] << "\t";
+    }
+    cout << "\n"
+         << endl;
+    for (int i = 0; i < ROW; i++)
+    {
+        cout << stu_names[i] << "\t";
+        for (int j = 0; j < COL; j++)
+        {
+            cout << scores[i][j] << "\t";
+        }
+        cout << "\n"
+             << endl;
+    }
+
+    return 0;
+}
+```
+
+运行结果：
+
+```bash
+4       3
+superman'senglish score: 2
+superman'smath score: 2
+superman'syuwen score: 2
+batman'senglish score: 2
+batman'smath score: 2
+batman'syuwen score: 2
+wonderwoman'senglish score: 2
+wonderwoman'smath score: 2
+wonderwoman'syuwen score: 2
+booboo'senglish score: 2
+booboo'smath score: 2
+booboo'syuwen score: 2
+        english math    yuwen
+
+superman        2       2       2
+
+batman  2       2       2
+
+wonderwoman     2       2       2
+
+booboo  2       2       2
+```
+
+
 
