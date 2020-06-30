@@ -382,17 +382,100 @@ MIN           10
 要求：根据要求操作排行榜战斗力值
 
 1. 战力值从大到小排序
-2. 删除山兜里42322
+2. 删除200
 3. 插入战斗力41000并保持降序
 
 ```c++
+#include <iostream>
+using namespace std;
 
+#include <iomanip>
+using std::setw;
+
+int main()
+{
+    // 使用维数组存放战斗力
+    int hero[]{
+        100,
+        200,
+        300,
+        400};
+    const int ROW = sizeof(hero) / sizeof(int);
+    cout << "=====当前战斗力明细:=====" << endl;
+    for (int i = 0; i < ROW; i++)
+    {
+        cout << "战斗力：" << hero[i] << endl;
+    }
+    // 删除战斗力200
+    // 1. 找到200的索引位
+    // 2. 将后一位覆盖前一位
+    cout << "=====请输入待删除的战斗力: ";
+    int data_del;
+    int index_del;
+    cin >> data_del;
+    for (int i = 0; i < ROW; i++)
+    {
+        if (hero[i] == data_del)
+        {
+            index_del = i;
+        }
+    }
+    cout << "@待删除的元素索引位: " << index_del << endl;
+
+
+
+    for (int i = index_del; i < ROW - 1; i++)
+    {
+        hero[i] = hero[i + 1];
+    }
+
+    cout << "=====删除后:=====" << endl;
+    for (int i = 0; i < ROW - 1; i++)
+    {
+        cout << "战斗力：" << hero[i] << endl;
+    }
+
+    // 插入41000的战斗力
+    // 1. 插入到末尾
+    // 2. 重新排序[先不做]
+    int data_insert;
+    cout << "=====请输入待插入的战斗力: ";
+    cin >> data_insert;
+    cout << "=====待插入战斗力：" << data_insert << endl;
+    hero[ROW-1] = data_insert;
+    cout << "=====插入后:=====" << endl;
+    cout << "=====ROW:=====" << ROW << endl;
+    for (int i = 0; i < ROW; i++)
+    {
+        cout << "战斗力：" << hero[i] << endl;
+    }
+
+    return 0;
+}
 ```
 
 运行结果：
 
 ```bash
-
+=====当前战斗力明细:=====
+战斗力：100
+战斗力：200
+战斗力：300
+战斗力：400
+=====请输入待删除的战斗力: 200
+@待删除的元素索引位: 1
+=====删除后:=====
+战斗力：100
+战斗力：300
+战斗力：400
+=====请输入待插入的战斗力: 900
+=====待插入战斗力：900
+=====插入后:=====
+=====ROW:=====4
+战斗力：100
+战斗力：300
+战斗力：400
+战斗力：900
 ```
 
 ## 二维数组
@@ -479,3 +562,16 @@ booboo  2       2       2
 
 
 
+{% note info 学习感受%}
+
+我已经学习过的语言包括：
+
+大学（汇编语言、C语言）
+
+工作（Bash Shell、SQL、PL/SQL、Python）
+
+现在（C++）
+
+对比下来，Python确实简单，快，美，不过我也很期待C++高级的功能，迫不及待想学习更多哈
+
+{% endnote %}
