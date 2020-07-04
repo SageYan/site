@@ -270,6 +270,131 @@ a[4][1]: 8
 
 如上所述，您可以创建任意维度的数组，但是一般情况下，我们创建的数组是一维数组和二维数组。
 
+# 向量容器
+
+{% note warn 数组的替代品%}
+
+数组的替代品:向量容器vector
+
+{% endnote %}
+
+## 定义和初始化
+
+向量（Vector）是一个封装了动态大小数组的顺序容器（Sequence Container）。跟任意其它类型容器一样，它能够存放各种类型的对象。可以简单的认为，向量是一个能够存放任意类型的动态数组。
+
+* 动态数组，可以运行阶段设置长度
+* 具有数组的快速索引方式
+* 可以插入和删除元素
+
+```c++
+#include <vector> 
+using namespace std;
+
+vector <double> vec1; // 未指定个数
+vector <string> vec2(5); // 5个元素，每个元素的数据类型都是字符串
+vector <int> vec3(20,998); // 20个元素，每个元素的值都是998
+```
+
+## 容器特性
+
+* 顺序序列：顺序容器中的元素按照严格的线性顺序排序。可以通过元素在序列中的位置访问对应的元素。
+
+* 动态数组：支持对序列中的任意元素进行快速直接访问，甚至可以通过指针算述进行该操作。操供了在序列末尾相对快速地添加/删除元素的操作。
+
+* 能够感知内存分配器的（Allocator-aware）：容器使用一个内存分配器对象来动态地处理它的存储需求。
+
+## 基本函数
+
+### 构造函数
+
+- vector():创建一个空vector
+- vector(int nSize):创建一个vector,元素个数为nSize
+- vector(int nSize,const t& t):创建一个vector，元素个数为nSize,且值均为t
+- vector(const vector&):复制构造函数
+- vector(begin,end):复制[begin,end)区间内另一个数组的元素到vector中
+
+### 增加函数
+
+- void push_back(const T& x):向量尾部增加一个元素X
+- iterator insert(iterator it,const T& x):向量中迭代器指向元素前增加一个元素x
+- iterator insert(iterator it,int n,const T& x):向量中迭代器指向元素前增加n个相同的元素x
+- iterator insert(iterator it,const_iterator first,const_iterator last):向量中迭代器指向元素前插入另一个相同类型向量的[first,last)间的数据
+
+### 删除函数
+
+- iterator erase(iterator it):删除向量中迭代器指向元素
+- iterator erase(iterator first,iterator last):删除向量中[first,last)中元素
+- void pop_back():删除向量中最后一个元素
+- void clear():清空向量中所有元素
+
+### 遍历函数
+
+- reference at(int pos):返回pos位置元素的引用
+- reference front():返回首元素的引用
+- reference back():返回尾元素的引用
+- iterator begin():返回向量头指针，指向第一个元素
+- iterator end():返回向量尾指针，指向向量最后一个元素的下一个位置
+- reverse_iterator rbegin():反向迭代器，指向最后一个元素
+- reverse_iterator rend():反向迭代器，指向第一个元素之前的位置
+
+### 判断函数
+
+- bool empty() const:判断向量是否为空，若为空，则向量中无元素
+
+### 大小函数
+
+- int size() const:返回向量中元素的个数
+- int capacity() const:返回当前向量所能容纳的最大元素值
+- int max_size() const:返回最大可允许的vector元素数量值
+
+### 其他函数
+
+- void swap(vector&):交换两个同类型向量的数据
+- void assign(int n,const T& x):设置向量中第n个元素的值为x
+- void assign(const_iterator first,const_iterator last):向量中[first,last)中元素设置成当前向量元素
+
+### 看着清楚
+
+> 1.push_back 在数组的最后添加一个数据
+>
+> 2.pop_back 去掉数组的最后一个数据
+>
+> 3.at 得到编号位置的数据
+>
+> 4.begin 得到数组头的指针
+>
+> 5.end 得到数组的最后一个单元+1的指针
+>
+> 6．front 得到数组头的引用
+>
+> 7.back 得到数组的最后一个单元的引用
+>
+> 8.max_size 得到vector最大可以是多大
+>
+> 9.capacity 当前vector分配的大小
+>
+> 10.size 当前使用数据的大小
+>
+> 11.resize 改变当前使用数据的大小，如果它比当前使用的大，者填充默认值
+>
+> 12.reserve 改变当前vecotr所分配空间的大小
+>
+> 13.erase 删除指针指向的数据项
+>
+> 14.clear 清空当前的vector
+>
+> 15.rbegin 将vector反转后的开始指针返回(其实就是原来的end-1)
+>
+> 16.rend 将vector反转构的结束指针返回(其实就是原来的begin-1)
+>
+> 17.empty 判断vector是否为空
+>
+> 18.swap 与另一个vector交换数据
+
+------
+
+
+
 # 课堂练习
 
 ## 数组基本操作
@@ -560,6 +685,108 @@ wonderwoman     2       2       2
 booboo  2       2       2
 ```
 
+## 向量容器练习
+
+```c++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+#include <iomanip>
+using std::setw;
+
+int main()
+{
+    /* C++ vector VS Python List
+    *  追加元素 push_back()                             append() 
+    *  数组长度 size()                                  __len__()
+    *  迭代器   vector<double>::iterator it;            __iter__()
+    *          for (it = vec_double.begin(); it != vec_double.end(); it++){ } 
+    *  排序     
+    */
+    vector<double> vec_double = {98.5, 67.9, 55.8, 100.1, 13.2};
+    // 遍历
+    cout << "初始化数组长度：" << vec_double.size() << endl;
+    cout << "初始化数组元素：" << endl;
+    for (int i = 0; i < vec_double.size(); i++)
+    {
+        cout << vec_double[i] << endl;
+    }
+    // 向数组中插入数字
+    cout << "向数组中插入数字：77.7" << endl;
+    vec_double.push_back(77.7); //末尾追加一个元素 类似python的append()方法
+    cout << "插入后数组长度：" << vec_double.size() << endl;
+    cout << "插入后数组元素：" << endl;
+    // 遍历
+    for (int i = 0; i < vec_double.size(); i++)
+    {
+        cout << vec_double[i] << endl;
+    } // 获取数字的大小 size()方法 类似python list的__len__() 方法
+
+    // 集合的通用遍历，使用迭代器 iterator
+    // 以下是迭代器的基本用法，高能慎重
+    vector<double>::iterator it; // 得到迭代器对象
+    // 排序
+    cout << "正序排列：" << endl;
+    sort(vec_double.begin(), vec_double.end());
+    // it.begin
+    for (it = vec_double.begin(); it != vec_double.end(); it++)
+    {
+        cout << *it << endl;
+    }
+    cout << "倒序排列：" << endl;
+    reverse(vec_double.begin(), vec_double.end());
+    // it.begin
+    for (it = vec_double.begin(); it != vec_double.end(); it++)
+    {
+        cout << *it << endl;
+    }
+    // 类似 Python list的 __iter__() 方法
+
+    return 0;
+}
+```
+
+运行结果：
+
+```bash
+初始化数组长度：5     
+初始化数组元素：      
+98.5
+67.9
+55.8
+100.1
+13.2
+向数组中插入数字：77.7
+插入后数组长度：6     
+插入后数组元素：
+98.5
+67.9
+55.8
+100.1
+13.2
+77.7
+正序排列：
+13.2
+55.8
+67.9
+77.7
+98.5
+100.1
+倒序排列：
+100.1
+98.5
+77.7
+67.9
+55.8
+13.2
+```
+
+
+
+
+
 
 
 {% note info 学习感受%}
@@ -573,5 +800,7 @@ booboo  2       2       2
 现在（C++）
 
 对比下来，Python确实简单，快，美，不过我也很期待C++高级的功能，迫不及待想学习更多哈
+
+数组的替代品 向量容器 vector 类似Python的 List。
 
 {% endnote %}

@@ -87,6 +87,7 @@ mse:
     flow_control_statement: /mse/c++/flow_control_statement.html
     array: /mse/c++/array.html
     pointer_peference: /mse/c++/pointer_peference.html
+    dynamic_memory: /mse/c++/dynamic_memory.html
   algorithm:
     overview: /mse/algorithm/index.html
   software:
